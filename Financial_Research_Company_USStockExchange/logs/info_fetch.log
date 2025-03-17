@@ -1,0 +1,798 @@
+2025-03-15 07:27:51,427 - INFO - Calling analyze_stock
+2025-03-15 07:27:51,427 - INFO - Calling get_latest_trading_day
+2025-03-15 07:27:51,427 - INFO - Successfully executed get_latest_trading_day
+2025-03-15 07:27:51,427 - INFO - Calling get_ticker_details
+2025-03-15 07:27:52,208 - INFO - Successfully executed get_ticker_details
+2025-03-15 07:27:52,209 - INFO - Calling get_aggregates
+2025-03-15 07:27:52,908 - INFO - Successfully executed get_aggregates
+2025-03-15 07:27:52,910 - INFO - Calling get_daily_open_close
+2025-03-15 07:27:53,649 - INFO - Successfully executed get_daily_open_close
+2025-03-15 07:27:53,651 - INFO - Calling get_dividends
+2025-03-15 07:27:54,390 - INFO - Successfully executed get_dividends
+2025-03-15 07:27:54,391 - INFO - Calling get_stock_splits
+2025-03-15 07:27:55,146 - INFO - Successfully executed get_stock_splits
+2025-03-15 07:27:55,147 - INFO - Calling get_sma
+2025-03-15 07:27:55,892 - INFO - Successfully executed get_sma
+2025-03-15 07:27:55,893 - INFO - Calling get_ticker_news
+2025-03-15 07:27:56,611 - INFO - Successfully executed get_ticker_news
+2025-03-15 07:27:56,612 - INFO - Calling get_cik
+2025-03-15 07:27:56,612 - INFO - Calling get_ticker_details
+2025-03-15 07:27:57,350 - INFO - Successfully executed get_ticker_details
+2025-03-15 07:27:57,350 - INFO - Successfully executed get_cik
+2025-03-15 07:27:57,351 - INFO - Calling get_financials
+2025-03-15 07:27:58,079 - INFO - Successfully executed get_financials
+2025-03-15 07:27:58,080 - INFO - Calling get_sma
+2025-03-15 07:27:58,830 - INFO - Successfully executed get_sma
+2025-03-15 07:27:58,831 - INFO - Calling sec_search
+2025-03-15 07:27:58,831 - INFO - Calling get_company_facts
+2025-03-15 07:28:02,400 - INFO - Successfully executed get_company_facts
+2025-03-15 07:28:02,400 - INFO - Calling get_company_filings
+2025-03-15 07:28:03,150 - INFO - Successfully executed get_company_filings
+2025-03-15 07:28:03,151 - INFO - Successfully executed sec_search
+2025-03-15 07:28:03,151 - INFO - Calling sec_search
+2025-03-15 07:28:03,152 - INFO - Calling get_company_facts
+2025-03-15 07:28:04,982 - INFO - Successfully executed get_company_facts
+2025-03-15 07:28:04,982 - INFO - Calling get_company_filings
+2025-03-15 07:28:05,628 - INFO - Successfully executed get_company_filings
+2025-03-15 07:28:05,629 - INFO - Successfully executed sec_search
+2025-03-15 07:28:05,633 - INFO - Successfully executed analyze_stock
+2025-03-15 07:33:19,076 - INFO - Calling analyze_stock
+2025-03-15 07:33:19,076 - INFO - Calling get_latest_trading_day
+2025-03-15 07:33:19,076 - INFO - Successfully executed get_latest_trading_day
+2025-03-15 07:33:19,076 - INFO - Calling get_ticker_details
+2025-03-15 07:33:19,947 - INFO - Successfully executed get_ticker_details
+2025-03-15 07:33:19,948 - INFO - Calling get_aggregates
+2025-03-15 07:33:20,660 - INFO - Successfully executed get_aggregates
+2025-03-15 07:33:20,661 - INFO - Calling get_daily_open_close
+2025-03-15 07:33:21,409 - INFO - Successfully executed get_daily_open_close
+2025-03-15 07:33:21,410 - INFO - Calling get_dividends
+2025-03-15 07:33:22,132 - INFO - Successfully executed get_dividends
+2025-03-15 07:33:22,133 - INFO - Calling get_stock_splits
+2025-03-15 07:33:22,867 - INFO - Successfully executed get_stock_splits
+2025-03-15 07:33:22,868 - INFO - Calling get_sma
+2025-03-15 07:33:23,608 - INFO - Successfully executed get_sma
+2025-03-15 07:33:23,609 - INFO - Calling get_ticker_news
+2025-03-15 07:33:24,341 - INFO - Successfully executed get_ticker_news
+2025-03-15 07:33:24,341 - INFO - Calling get_cik
+2025-03-15 07:33:24,342 - INFO - Calling get_ticker_details
+2025-03-15 07:33:25,076 - INFO - Successfully executed get_ticker_details
+2025-03-15 07:33:25,077 - INFO - Successfully executed get_cik
+2025-03-15 07:33:25,077 - INFO - Calling get_financials
+2025-03-15 07:33:25,800 - INFO - Successfully executed get_financials
+2025-03-15 07:33:25,801 - INFO - Calling get_sma
+2025-03-15 07:33:27,060 - INFO - Successfully executed get_sma
+2025-03-15 07:33:27,061 - INFO - Calling sec_search
+2025-03-15 07:33:27,061 - INFO - Calling get_company_facts
+2025-03-15 07:33:28,597 - INFO - Successfully executed get_company_facts
+2025-03-15 07:33:28,597 - INFO - Calling get_company_filings
+2025-03-15 07:33:29,029 - INFO - Successfully executed get_company_filings
+2025-03-15 07:33:29,030 - INFO - Successfully executed sec_search
+2025-03-15 07:33:29,030 - INFO - Calling sec_search
+2025-03-15 07:33:29,030 - INFO - Calling get_company_facts
+2025-03-15 07:33:29,748 - INFO - Successfully executed get_company_facts
+2025-03-15 07:33:29,749 - INFO - Calling get_company_filings
+2025-03-15 07:33:30,187 - INFO - Successfully executed get_company_filings
+2025-03-15 07:33:30,187 - INFO - Successfully executed sec_search
+2025-03-15 07:33:30,190 - INFO - Successfully executed analyze_stock
+2025-03-15 07:33:30,481 - INFO - Analysis data directly set for AAPL
+2025-03-15 07:33:30,973 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:30,974 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:30,985 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:30,986 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:30,992 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:30,993 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:30,993 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:30,994 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,031 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,032 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,032 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,032 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,038 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,038 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,038 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,039 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,043 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,043 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,043 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,045 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,045 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,046 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,078 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,078 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,079 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,081 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,081 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,081 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,083 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,084 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,084 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,086 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,087 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,087 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,089 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,089 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,090 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,091 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,092 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,092 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,124 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,124 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,125 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,127 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,127 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,127 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,130 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,130 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,130 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,132 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,132 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,133 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,135 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,135 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,136 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,138 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,138 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 07:33:31,138 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 12:58:02,044 - INFO - Calling analyze_stock
+2025-03-15 12:58:02,044 - INFO - Calling get_latest_trading_day
+2025-03-15 12:58:02,045 - INFO - Successfully executed get_latest_trading_day
+2025-03-15 12:58:02,045 - INFO - Calling get_ticker_details
+2025-03-15 12:58:02,847 - INFO - Successfully executed get_ticker_details
+2025-03-15 12:58:02,847 - INFO - Calling get_aggregates
+2025-03-15 12:58:03,590 - INFO - Successfully executed get_aggregates
+2025-03-15 12:58:03,591 - INFO - Calling get_daily_open_close
+2025-03-15 12:58:04,364 - INFO - Successfully executed get_daily_open_close
+2025-03-15 12:58:04,366 - INFO - Calling get_dividends
+2025-03-15 12:58:05,069 - INFO - Successfully executed get_dividends
+2025-03-15 12:58:05,070 - INFO - Calling get_stock_splits
+2025-03-15 12:58:05,815 - INFO - Successfully executed get_stock_splits
+2025-03-15 12:58:05,816 - INFO - Calling get_sma
+2025-03-15 12:58:06,565 - INFO - Successfully executed get_sma
+2025-03-15 12:58:06,566 - INFO - Calling get_ticker_news
+2025-03-15 12:58:07,321 - INFO - Successfully executed get_ticker_news
+2025-03-15 12:58:07,322 - INFO - Calling get_cik
+2025-03-15 12:58:07,322 - INFO - Calling get_ticker_details
+2025-03-15 12:58:08,049 - INFO - Successfully executed get_ticker_details
+2025-03-15 12:58:08,050 - INFO - Successfully executed get_cik
+2025-03-15 12:58:08,050 - INFO - Calling get_financials
+2025-03-15 12:58:08,780 - INFO - Successfully executed get_financials
+2025-03-15 12:58:08,781 - INFO - Calling get_sma
+2025-03-15 12:58:09,559 - INFO - Successfully executed get_sma
+2025-03-15 12:58:09,561 - INFO - Calling sec_search
+2025-03-15 12:58:09,562 - INFO - Calling get_company_facts
+2025-03-15 12:58:11,289 - INFO - Successfully executed get_company_facts
+2025-03-15 12:58:11,289 - INFO - Calling get_company_filings
+2025-03-15 12:58:11,893 - INFO - Successfully executed get_company_filings
+2025-03-15 12:58:11,893 - INFO - Successfully executed sec_search
+2025-03-15 12:58:11,893 - INFO - Calling sec_search
+2025-03-15 12:58:11,894 - INFO - Calling get_company_facts
+2025-03-15 12:58:12,670 - INFO - Successfully executed get_company_facts
+2025-03-15 12:58:12,670 - INFO - Calling get_company_filings
+2025-03-15 12:58:13,109 - INFO - Successfully executed get_company_filings
+2025-03-15 12:58:13,110 - INFO - Successfully executed sec_search
+2025-03-15 12:58:13,116 - INFO - Successfully executed analyze_stock
+2025-03-15 12:58:13,412 - INFO - Analysis data directly set for AAPL
+2025-03-15 12:58:13,737 - ERROR - Error creating price chart: 'list' object has no attribute 'grey'
+2025-03-15 12:58:13,738 - INFO - SEC filings data structure type: <class 'dict'>
+2025-03-15 13:01:17,843 - INFO - Calling analyze_stock
+2025-03-15 13:01:17,844 - INFO - Calling get_latest_trading_day
+2025-03-15 13:01:17,844 - INFO - Successfully executed get_latest_trading_day
+2025-03-15 13:01:17,844 - INFO - Calling get_ticker_details
+2025-03-15 13:01:18,660 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:01:18,661 - INFO - Calling get_aggregates
+2025-03-15 13:01:19,378 - INFO - Successfully executed get_aggregates
+2025-03-15 13:01:19,378 - INFO - Calling get_daily_open_close
+2025-03-15 13:01:20,156 - INFO - Successfully executed get_daily_open_close
+2025-03-15 13:01:20,157 - INFO - Calling get_dividends
+2025-03-15 13:01:20,887 - INFO - Successfully executed get_dividends
+2025-03-15 13:01:20,887 - INFO - Calling get_stock_splits
+2025-03-15 13:01:21,638 - INFO - Successfully executed get_stock_splits
+2025-03-15 13:01:21,640 - INFO - Calling get_sma
+2025-03-15 13:01:22,356 - INFO - Successfully executed get_sma
+2025-03-15 13:01:22,356 - INFO - Calling get_ticker_news
+2025-03-15 13:01:23,140 - INFO - Successfully executed get_ticker_news
+2025-03-15 13:01:23,140 - INFO - Calling get_cik
+2025-03-15 13:01:23,141 - INFO - Calling get_ticker_details
+2025-03-15 13:01:23,863 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:01:23,864 - INFO - Successfully executed get_cik
+2025-03-15 13:01:23,864 - INFO - Calling get_financials
+2025-03-15 13:01:24,663 - INFO - Successfully executed get_financials
+2025-03-15 13:01:24,664 - INFO - Calling get_sma
+2025-03-15 13:01:25,366 - INFO - Successfully executed get_sma
+2025-03-15 13:01:25,367 - INFO - Calling sec_search
+2025-03-15 13:01:25,368 - INFO - Calling get_company_facts
+2025-03-15 13:01:27,375 - INFO - Successfully executed get_company_facts
+2025-03-15 13:01:27,375 - INFO - Calling get_company_filings
+2025-03-15 13:01:27,786 - INFO - Successfully executed get_company_filings
+2025-03-15 13:01:27,787 - INFO - Successfully executed sec_search
+2025-03-15 13:01:27,787 - INFO - Calling sec_search
+2025-03-15 13:01:27,787 - INFO - Calling get_company_facts
+2025-03-15 13:01:28,563 - INFO - Successfully executed get_company_facts
+2025-03-15 13:01:28,563 - INFO - Calling get_company_filings
+2025-03-15 13:01:29,022 - INFO - Successfully executed get_company_filings
+2025-03-15 13:01:29,023 - INFO - Successfully executed sec_search
+2025-03-15 13:01:29,027 - INFO - Successfully executed analyze_stock
+2025-03-15 13:01:29,324 - INFO - Analysis data directly set for AAPL
+2025-03-15 13:01:29,655 - INFO - SEC filings data structure type: <class 'dict'>
+2025-03-15 13:01:29,655 - WARNING - Error parsing news date: 'str' object cannot be interpreted as an integer
+2025-03-15 13:01:29,655 - WARNING - Error parsing news date: 'str' object cannot be interpreted as an integer
+2025-03-15 13:01:29,655 - WARNING - Error parsing news date: 'str' object cannot be interpreted as an integer
+2025-03-15 13:01:29,656 - WARNING - Error parsing news date: 'str' object cannot be interpreted as an integer
+2025-03-15 13:01:29,656 - WARNING - Error parsing news date: 'str' object cannot be interpreted as an integer
+2025-03-15 13:01:29,673 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 13:01:29,673 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-15 13:01:29,800 - INFO - Report successfully generated: reports/AAPL_Analysis_2025-03-15.pdf
+2025-03-15 13:14:01,368 - INFO - Calling analyze_stock
+2025-03-15 13:14:01,368 - INFO - Calling get_latest_trading_day
+2025-03-15 13:14:01,368 - INFO - Successfully executed get_latest_trading_day
+2025-03-15 13:14:01,368 - INFO - Calling get_ticker_details
+2025-03-15 13:14:02,315 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:14:02,316 - INFO - Calling get_aggregates
+2025-03-15 13:14:03,028 - INFO - Successfully executed get_aggregates
+2025-03-15 13:14:03,030 - INFO - Calling get_daily_open_close
+2025-03-15 13:14:03,794 - INFO - Successfully executed get_daily_open_close
+2025-03-15 13:14:03,794 - INFO - Calling get_dividends
+2025-03-15 13:14:04,545 - INFO - Successfully executed get_dividends
+2025-03-15 13:14:04,545 - INFO - Calling get_stock_splits
+2025-03-15 13:14:05,285 - INFO - Successfully executed get_stock_splits
+2025-03-15 13:14:05,286 - INFO - Calling get_sma
+2025-03-15 13:14:06,043 - INFO - Successfully executed get_sma
+2025-03-15 13:14:06,045 - INFO - Calling get_ticker_news
+2025-03-15 13:14:06,754 - INFO - Successfully executed get_ticker_news
+2025-03-15 13:14:06,754 - INFO - Calling get_cik
+2025-03-15 13:14:06,755 - INFO - Calling get_ticker_details
+2025-03-15 13:14:07,472 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:14:07,472 - INFO - Successfully executed get_cik
+2025-03-15 13:14:07,472 - INFO - Calling get_financials
+2025-03-15 13:14:08,185 - INFO - Successfully executed get_financials
+2025-03-15 13:14:08,185 - INFO - Calling get_sma
+2025-03-15 13:14:08,936 - INFO - Successfully executed get_sma
+2025-03-15 13:14:08,937 - INFO - Calling sec_search
+2025-03-15 13:14:08,937 - INFO - Calling get_company_facts
+2025-03-15 13:14:12,372 - INFO - Successfully executed get_company_facts
+2025-03-15 13:14:12,372 - INFO - Calling get_company_filings
+2025-03-15 13:14:12,870 - INFO - Successfully executed get_company_filings
+2025-03-15 13:14:12,870 - INFO - Successfully executed sec_search
+2025-03-15 13:14:12,871 - INFO - Calling sec_search
+2025-03-15 13:14:12,871 - INFO - Calling get_company_facts
+2025-03-15 13:14:13,938 - INFO - Successfully executed get_company_facts
+2025-03-15 13:14:13,938 - INFO - Calling get_company_filings
+2025-03-15 13:14:14,388 - INFO - Successfully executed get_company_filings
+2025-03-15 13:14:14,389 - INFO - Successfully executed sec_search
+2025-03-15 13:14:14,394 - INFO - Successfully executed analyze_stock
+2025-03-15 13:14:14,621 - INFO - Analysis data directly set for AAPL
+2025-03-15 13:14:14,881 - ERROR - Error creating financial highlights: '>' not supported between instances of 'dict' and 'int'
+Traceback (most recent call last):
+  File "/Volumes/DevDrive/POC_Sale_Projects/Financial_Research_Company_USStockExchange/ReportGeneration.py", line 1737, in _create_financial_highlights
+    if assets is not None and liabilities is not None and assets > 0:
+TypeError: '>' not supported between instances of 'dict' and 'int'
+
+2025-03-15 13:14:14,985 - ERROR - Error generating report: unsupported operand type(s) for -: 'float' and 'NoneType'
+Traceback (most recent call last):
+  File "/Volumes/DevDrive/POC_Sale_Projects/Financial_Research_Company_USStockExchange/ReportGeneration.py", line 392, in generate_report
+    doc.build(elements, onFirstPage=header_footer, onLaterPages=header_footer)
+  File "/Volumes/DevDrive/POC_Sale_Projects/Financial_Research_Company_USStockExchange/.venv/lib/python3.10/site-packages/reportlab/platypus/doctemplate.py", line 1322, in build
+    BaseDocTemplate.build(self,flowables, canvasmaker=canvasmaker)
+  File "/Volumes/DevDrive/POC_Sale_Projects/Financial_Research_Company_USStockExchange/.venv/lib/python3.10/site-packages/reportlab/platypus/doctemplate.py", line 1083, in build
+    self.handle_flowable(flowables)
+  File "/Volumes/DevDrive/POC_Sale_Projects/Financial_Research_Company_USStockExchange/.venv/lib/python3.10/site-packages/reportlab/platypus/doctemplate.py", line 932, in handle_flowable
+    if frame.add(f, canv, trySplit=self.allowSplitting):
+  File "/Volumes/DevDrive/POC_Sale_Projects/Financial_Research_Company_USStockExchange/.venv/lib/python3.10/site-packages/reportlab/platypus/frames.py", line 201, in _add
+    flowable.drawOn(canv, self._x + self._leftExtraIndent, y, _sW=aW-w)
+TypeError: unsupported operand type(s) for -: 'float' and 'NoneType'
+
+2025-03-15 13:20:12,632 - INFO - Calling analyze_stock
+2025-03-15 13:20:12,633 - INFO - Calling get_latest_trading_day
+2025-03-15 13:20:12,633 - INFO - Successfully executed get_latest_trading_day
+2025-03-15 13:20:12,633 - INFO - Calling get_ticker_details
+2025-03-15 13:20:13,410 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:20:13,410 - INFO - Calling get_aggregates
+2025-03-15 13:20:14,175 - INFO - Successfully executed get_aggregates
+2025-03-15 13:20:14,175 - INFO - Calling get_daily_open_close
+2025-03-15 13:20:14,924 - INFO - Successfully executed get_daily_open_close
+2025-03-15 13:20:14,925 - INFO - Calling get_dividends
+2025-03-15 13:20:15,639 - INFO - Successfully executed get_dividends
+2025-03-15 13:20:15,639 - INFO - Calling get_stock_splits
+2025-03-15 13:20:16,364 - INFO - Successfully executed get_stock_splits
+2025-03-15 13:20:16,365 - INFO - Calling get_sma
+2025-03-15 13:20:17,093 - INFO - Successfully executed get_sma
+2025-03-15 13:20:17,094 - INFO - Calling get_ticker_news
+2025-03-15 13:20:17,855 - INFO - Successfully executed get_ticker_news
+2025-03-15 13:20:17,855 - INFO - Calling get_cik
+2025-03-15 13:20:17,855 - INFO - Calling get_ticker_details
+2025-03-15 13:20:18,643 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:20:18,643 - INFO - Successfully executed get_cik
+2025-03-15 13:20:18,643 - INFO - Calling get_financials
+2025-03-15 13:20:19,370 - INFO - Successfully executed get_financials
+2025-03-15 13:20:19,371 - INFO - Calling get_sma
+2025-03-15 13:20:20,133 - INFO - Successfully executed get_sma
+2025-03-15 13:20:20,133 - INFO - Calling sec_search
+2025-03-15 13:20:20,133 - INFO - Calling get_company_facts
+2025-03-15 13:20:21,801 - INFO - Successfully executed get_company_facts
+2025-03-15 13:20:21,802 - INFO - Calling get_company_filings
+2025-03-15 13:20:22,258 - INFO - Successfully executed get_company_filings
+2025-03-15 13:20:22,258 - INFO - Successfully executed sec_search
+2025-03-15 13:20:22,258 - INFO - Calling sec_search
+2025-03-15 13:20:22,258 - INFO - Calling get_company_facts
+2025-03-15 13:20:22,992 - INFO - Successfully executed get_company_facts
+2025-03-15 13:20:22,992 - INFO - Calling get_company_filings
+2025-03-15 13:20:23,445 - INFO - Successfully executed get_company_filings
+2025-03-15 13:20:23,446 - INFO - Successfully executed sec_search
+2025-03-15 13:20:23,453 - INFO - Successfully executed analyze_stock
+2025-03-15 13:20:23,681 - INFO - Analysis data directly set for AAPL
+2025-03-15 13:20:23,942 - INFO - SEC filings data structure type: <class 'dict'>
+2025-03-15 13:20:24,042 - ERROR - Error generating report: unsupported operand type(s) for -: 'float' and 'NoneType'
+Traceback (most recent call last):
+  File "/Volumes/DevDrive/POC_Sale_Projects/Financial_Research_Company_USStockExchange/ReportGeneration.py", line 392, in generate_report
+    doc.build(elements, onFirstPage=header_footer, onLaterPages=header_footer)
+  File "/Volumes/DevDrive/POC_Sale_Projects/Financial_Research_Company_USStockExchange/.venv/lib/python3.10/site-packages/reportlab/platypus/doctemplate.py", line 1322, in build
+    BaseDocTemplate.build(self,flowables, canvasmaker=canvasmaker)
+  File "/Volumes/DevDrive/POC_Sale_Projects/Financial_Research_Company_USStockExchange/.venv/lib/python3.10/site-packages/reportlab/platypus/doctemplate.py", line 1083, in build
+    self.handle_flowable(flowables)
+  File "/Volumes/DevDrive/POC_Sale_Projects/Financial_Research_Company_USStockExchange/.venv/lib/python3.10/site-packages/reportlab/platypus/doctemplate.py", line 932, in handle_flowable
+    if frame.add(f, canv, trySplit=self.allowSplitting):
+  File "/Volumes/DevDrive/POC_Sale_Projects/Financial_Research_Company_USStockExchange/.venv/lib/python3.10/site-packages/reportlab/platypus/frames.py", line 201, in _add
+    flowable.drawOn(canv, self._x + self._leftExtraIndent, y, _sW=aW-w)
+TypeError: unsupported operand type(s) for -: 'float' and 'NoneType'
+
+2025-03-15 13:25:46,494 - INFO - Calling analyze_stock
+2025-03-15 13:25:46,494 - INFO - Calling get_latest_trading_day
+2025-03-15 13:25:46,494 - INFO - Successfully executed get_latest_trading_day
+2025-03-15 13:25:46,494 - INFO - Calling get_ticker_details
+2025-03-15 13:25:47,304 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:25:47,304 - INFO - Calling get_aggregates
+2025-03-15 13:25:48,013 - INFO - Successfully executed get_aggregates
+2025-03-15 13:25:48,014 - INFO - Calling get_daily_open_close
+2025-03-15 13:25:49,035 - INFO - Successfully executed get_daily_open_close
+2025-03-15 13:25:49,036 - INFO - Calling get_dividends
+2025-03-15 13:25:49,747 - INFO - Successfully executed get_dividends
+2025-03-15 13:25:49,748 - INFO - Calling get_stock_splits
+2025-03-15 13:25:50,529 - INFO - Successfully executed get_stock_splits
+2025-03-15 13:25:50,530 - INFO - Calling get_sma
+2025-03-15 13:25:51,274 - INFO - Successfully executed get_sma
+2025-03-15 13:25:51,274 - INFO - Calling get_ticker_news
+2025-03-15 13:25:52,021 - INFO - Successfully executed get_ticker_news
+2025-03-15 13:25:52,021 - INFO - Calling get_cik
+2025-03-15 13:25:52,021 - INFO - Calling get_ticker_details
+2025-03-15 13:25:52,743 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:25:52,744 - INFO - Successfully executed get_cik
+2025-03-15 13:25:52,744 - INFO - Calling get_financials
+2025-03-15 13:25:53,461 - INFO - Successfully executed get_financials
+2025-03-15 13:25:53,462 - INFO - Calling get_sma
+2025-03-15 13:25:54,186 - INFO - Successfully executed get_sma
+2025-03-15 13:25:54,187 - INFO - Calling sec_search
+2025-03-15 13:25:54,187 - INFO - Calling get_company_facts
+2025-03-15 13:25:55,251 - INFO - Successfully executed get_company_facts
+2025-03-15 13:25:55,251 - INFO - Calling get_company_filings
+2025-03-15 13:25:55,673 - INFO - Successfully executed get_company_filings
+2025-03-15 13:25:55,674 - INFO - Successfully executed sec_search
+2025-03-15 13:25:55,674 - INFO - Calling sec_search
+2025-03-15 13:25:55,674 - INFO - Calling get_company_facts
+2025-03-15 13:25:56,347 - INFO - Successfully executed get_company_facts
+2025-03-15 13:25:56,347 - INFO - Calling get_company_filings
+2025-03-15 13:25:56,760 - INFO - Successfully executed get_company_filings
+2025-03-15 13:25:56,761 - INFO - Successfully executed sec_search
+2025-03-15 13:25:56,766 - INFO - Successfully executed analyze_stock
+2025-03-15 13:25:56,991 - INFO - Analysis data directly set for AAPL
+2025-03-15 13:25:57,269 - WARNING - Skipping invalid image in price chart section
+2025-03-15 13:25:57,270 - INFO - SEC filings data structure type: <class 'dict'>
+2025-03-15 13:25:57,376 - WARNING - Skipping invalid image in dividend analysis section
+2025-03-15 13:25:57,395 - INFO - Report successfully generated: reports/AAPL_Analysis_2025-03-15.pdf
+2025-03-15 13:33:10,240 - INFO - Calling analyze_stock
+2025-03-15 13:33:10,242 - INFO - Calling get_latest_trading_day
+2025-03-15 13:33:10,243 - INFO - Successfully executed get_latest_trading_day
+2025-03-15 13:33:10,243 - INFO - Calling get_ticker_details
+2025-03-15 13:33:11,270 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:33:11,271 - INFO - Calling get_aggregates
+2025-03-15 13:33:12,055 - INFO - Successfully executed get_aggregates
+2025-03-15 13:33:12,056 - INFO - Calling get_daily_open_close
+2025-03-15 13:33:12,830 - INFO - Successfully executed get_daily_open_close
+2025-03-15 13:33:12,830 - INFO - Calling get_dividends
+2025-03-15 13:33:13,564 - INFO - Successfully executed get_dividends
+2025-03-15 13:33:13,565 - INFO - Calling get_stock_splits
+2025-03-15 13:33:14,336 - INFO - Successfully executed get_stock_splits
+2025-03-15 13:33:14,337 - INFO - Calling get_sma
+2025-03-15 13:33:15,439 - INFO - Successfully executed get_sma
+2025-03-15 13:33:15,439 - INFO - Calling get_ticker_news
+2025-03-15 13:33:16,228 - INFO - Successfully executed get_ticker_news
+2025-03-15 13:33:16,229 - INFO - Calling get_cik
+2025-03-15 13:33:16,229 - INFO - Calling get_ticker_details
+2025-03-15 13:33:16,958 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:33:16,958 - INFO - Successfully executed get_cik
+2025-03-15 13:33:16,959 - INFO - Calling get_financials
+2025-03-15 13:33:17,726 - INFO - Successfully executed get_financials
+2025-03-15 13:33:17,727 - INFO - Calling get_sma
+2025-03-15 13:33:18,439 - INFO - Successfully executed get_sma
+2025-03-15 13:33:18,439 - INFO - Calling sec_search
+2025-03-15 13:33:18,440 - INFO - Calling get_company_facts
+2025-03-15 13:33:19,466 - INFO - Successfully executed get_company_facts
+2025-03-15 13:33:19,466 - INFO - Calling get_company_filings
+2025-03-15 13:33:19,864 - INFO - Successfully executed get_company_filings
+2025-03-15 13:33:19,865 - INFO - Successfully executed sec_search
+2025-03-15 13:33:19,865 - INFO - Calling sec_search
+2025-03-15 13:33:19,865 - INFO - Calling get_company_facts
+2025-03-15 13:33:20,540 - INFO - Successfully executed get_company_facts
+2025-03-15 13:33:20,540 - INFO - Calling get_company_filings
+2025-03-15 13:33:20,937 - INFO - Successfully executed get_company_filings
+2025-03-15 13:33:20,937 - INFO - Successfully executed sec_search
+2025-03-15 13:33:20,943 - INFO - Successfully executed analyze_stock
+2025-03-15 13:34:38,529 - INFO - Calling analyze_stock
+2025-03-15 13:34:38,530 - INFO - Calling get_latest_trading_day
+2025-03-15 13:34:38,530 - INFO - Successfully executed get_latest_trading_day
+2025-03-15 13:34:38,530 - INFO - Calling get_ticker_details
+2025-03-15 13:34:39,549 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:34:39,550 - INFO - Calling get_aggregates
+2025-03-15 13:34:40,315 - INFO - Successfully executed get_aggregates
+2025-03-15 13:34:40,316 - INFO - Calling get_daily_open_close
+2025-03-15 13:34:41,142 - INFO - Successfully executed get_daily_open_close
+2025-03-15 13:34:41,143 - INFO - Calling get_dividends
+2025-03-15 13:34:41,843 - INFO - Successfully executed get_dividends
+2025-03-15 13:34:41,843 - INFO - Calling get_stock_splits
+2025-03-15 13:34:42,570 - INFO - Successfully executed get_stock_splits
+2025-03-15 13:34:42,571 - INFO - Calling get_sma
+2025-03-15 13:34:43,303 - INFO - Successfully executed get_sma
+2025-03-15 13:34:43,303 - INFO - Calling get_ticker_news
+2025-03-15 13:34:44,051 - INFO - Successfully executed get_ticker_news
+2025-03-15 13:34:44,051 - INFO - Calling get_cik
+2025-03-15 13:34:44,051 - INFO - Calling get_ticker_details
+2025-03-15 13:34:44,771 - INFO - Successfully executed get_ticker_details
+2025-03-15 13:34:44,772 - INFO - Successfully executed get_cik
+2025-03-15 13:34:44,773 - INFO - Calling get_financials
+2025-03-15 13:34:45,511 - INFO - Successfully executed get_financials
+2025-03-15 13:34:45,512 - INFO - Calling get_sma
+2025-03-15 13:34:46,264 - INFO - Successfully executed get_sma
+2025-03-15 13:34:46,264 - INFO - Calling sec_search
+2025-03-15 13:34:46,265 - INFO - Calling get_company_facts
+2025-03-15 13:34:47,093 - INFO - Successfully executed get_company_facts
+2025-03-15 13:34:47,094 - INFO - Calling get_company_filings
+2025-03-15 13:34:47,514 - INFO - Successfully executed get_company_filings
+2025-03-15 13:34:47,515 - INFO - Successfully executed sec_search
+2025-03-15 13:34:47,515 - INFO - Calling sec_search
+2025-03-15 13:34:47,515 - INFO - Calling get_company_facts
+2025-03-15 13:34:48,216 - INFO - Successfully executed get_company_facts
+2025-03-15 13:34:48,216 - INFO - Calling get_company_filings
+2025-03-15 13:34:48,635 - INFO - Successfully executed get_company_filings
+2025-03-15 13:34:48,635 - INFO - Successfully executed sec_search
+2025-03-15 13:34:48,639 - INFO - Successfully executed analyze_stock
+2025-03-16 11:49:49,348 - INFO - Calling analyze_stock
+2025-03-16 11:49:49,348 - INFO - Calling get_latest_trading_day
+2025-03-16 11:49:49,349 - INFO - Successfully executed get_latest_trading_day
+2025-03-16 11:49:49,349 - INFO - Calling get_ticker_details
+2025-03-16 11:49:50,354 - INFO - Successfully executed get_ticker_details
+2025-03-16 11:49:50,354 - INFO - Calling get_aggregates
+2025-03-16 11:49:51,149 - INFO - Successfully executed get_aggregates
+2025-03-16 11:49:51,150 - INFO - Calling get_daily_open_close
+2025-03-16 11:49:51,937 - INFO - Successfully executed get_daily_open_close
+2025-03-16 11:49:51,937 - INFO - Calling get_dividends
+2025-03-16 11:49:52,724 - INFO - Successfully executed get_dividends
+2025-03-16 11:49:52,726 - INFO - Calling get_stock_splits
+2025-03-16 11:49:53,490 - INFO - Successfully executed get_stock_splits
+2025-03-16 11:49:53,491 - INFO - Calling get_sma
+2025-03-16 11:49:54,818 - INFO - Successfully executed get_sma
+2025-03-16 11:49:54,819 - INFO - Calling get_ticker_news
+2025-03-16 11:49:55,867 - INFO - Successfully executed get_ticker_news
+2025-03-16 11:49:55,868 - INFO - Calling get_cik
+2025-03-16 11:49:55,868 - INFO - Calling get_ticker_details
+2025-03-16 11:49:56,639 - INFO - Successfully executed get_ticker_details
+2025-03-16 11:49:56,639 - INFO - Successfully executed get_cik
+2025-03-16 11:49:56,639 - INFO - Calling get_financials
+2025-03-16 11:49:57,445 - INFO - Successfully executed get_financials
+2025-03-16 11:49:57,446 - INFO - Calling get_sma
+2025-03-16 11:49:58,222 - INFO - Successfully executed get_sma
+2025-03-16 11:49:58,223 - INFO - Calling sec_search
+2025-03-16 11:49:58,223 - INFO - Calling get_company_facts
+2025-03-16 11:50:01,147 - INFO - Successfully executed get_company_facts
+2025-03-16 11:50:01,147 - INFO - Calling get_company_filings
+2025-03-16 11:50:01,654 - INFO - Successfully executed get_company_filings
+2025-03-16 11:50:01,655 - INFO - Successfully executed sec_search
+2025-03-16 11:50:01,656 - INFO - Calling sec_search
+2025-03-16 11:50:01,656 - INFO - Calling get_company_facts
+2025-03-16 11:50:02,418 - INFO - Successfully executed get_company_facts
+2025-03-16 11:50:02,418 - INFO - Calling get_company_filings
+2025-03-16 11:50:03,028 - INFO - Successfully executed get_company_filings
+2025-03-16 11:50:03,029 - INFO - Successfully executed sec_search
+2025-03-16 11:50:03,037 - INFO - Successfully executed analyze_stock
+2025-03-16 11:55:50,746 - INFO - Calling analyze_stock
+2025-03-16 11:55:50,747 - INFO - Calling get_latest_trading_day
+2025-03-16 11:55:50,748 - INFO - Successfully executed get_latest_trading_day
+2025-03-16 11:55:50,748 - INFO - Calling get_ticker_details
+2025-03-16 11:55:51,710 - INFO - Successfully executed get_ticker_details
+2025-03-16 11:55:51,711 - INFO - Calling get_aggregates
+2025-03-16 11:55:52,423 - INFO - Successfully executed get_aggregates
+2025-03-16 11:55:52,424 - INFO - Calling get_daily_open_close
+2025-03-16 11:55:53,394 - INFO - Successfully executed get_daily_open_close
+2025-03-16 11:55:53,394 - INFO - Calling get_dividends
+2025-03-16 11:55:54,134 - INFO - Successfully executed get_dividends
+2025-03-16 11:55:54,134 - INFO - Calling get_stock_splits
+2025-03-16 11:55:54,845 - INFO - Successfully executed get_stock_splits
+2025-03-16 11:55:54,846 - INFO - Calling get_sma
+2025-03-16 11:55:55,604 - INFO - Successfully executed get_sma
+2025-03-16 11:55:55,605 - INFO - Calling get_ticker_news
+2025-03-16 11:55:56,337 - INFO - Successfully executed get_ticker_news
+2025-03-16 11:55:56,338 - INFO - Calling get_cik
+2025-03-16 11:55:56,338 - INFO - Calling get_ticker_details
+2025-03-16 11:55:57,062 - INFO - Successfully executed get_ticker_details
+2025-03-16 11:55:57,063 - INFO - Successfully executed get_cik
+2025-03-16 11:55:57,063 - INFO - Calling get_financials
+2025-03-16 11:55:57,794 - INFO - Successfully executed get_financials
+2025-03-16 11:55:57,795 - INFO - Calling get_sma
+2025-03-16 11:55:58,527 - INFO - Successfully executed get_sma
+2025-03-16 11:55:58,528 - INFO - Calling sec_search
+2025-03-16 11:55:58,528 - INFO - Calling get_company_facts
+2025-03-16 11:55:59,431 - INFO - Successfully executed get_company_facts
+2025-03-16 11:55:59,431 - INFO - Calling get_company_filings
+2025-03-16 11:55:59,837 - INFO - Successfully executed get_company_filings
+2025-03-16 11:55:59,838 - INFO - Successfully executed sec_search
+2025-03-16 11:55:59,838 - INFO - Calling sec_search
+2025-03-16 11:55:59,839 - INFO - Calling get_company_facts
+2025-03-16 11:56:00,627 - INFO - Successfully executed get_company_facts
+2025-03-16 11:56:00,627 - INFO - Calling get_company_filings
+2025-03-16 11:56:01,045 - INFO - Successfully executed get_company_filings
+2025-03-16 11:56:01,046 - INFO - Successfully executed sec_search
+2025-03-16 11:56:01,054 - INFO - Successfully executed analyze_stock
+2025-03-16 12:30:19,339 - INFO - Calling analyze_stock
+2025-03-16 12:30:19,340 - INFO - Calling get_latest_trading_day
+2025-03-16 12:30:19,340 - INFO - Successfully executed get_latest_trading_day
+2025-03-16 12:30:19,341 - INFO - Calling get_ticker_details
+2025-03-16 12:30:20,141 - INFO - Successfully executed get_ticker_details
+2025-03-16 12:30:20,142 - INFO - Calling get_aggregates
+2025-03-16 12:30:20,846 - INFO - Successfully executed get_aggregates
+2025-03-16 12:30:20,847 - INFO - Calling get_daily_open_close
+2025-03-16 12:30:21,606 - INFO - Successfully executed get_daily_open_close
+2025-03-16 12:30:21,607 - INFO - Calling get_dividends
+2025-03-16 12:30:22,310 - INFO - Successfully executed get_dividends
+2025-03-16 12:30:22,311 - INFO - Calling get_stock_splits
+2025-03-16 12:30:23,016 - INFO - Successfully executed get_stock_splits
+2025-03-16 12:30:23,017 - INFO - Calling get_sma
+2025-03-16 12:30:23,725 - INFO - Successfully executed get_sma
+2025-03-16 12:30:23,726 - INFO - Calling get_ticker_news
+2025-03-16 12:30:24,903 - INFO - Successfully executed get_ticker_news
+2025-03-16 12:30:24,903 - INFO - Calling get_cik
+2025-03-16 12:30:24,904 - INFO - Calling get_ticker_details
+2025-03-16 12:30:25,621 - INFO - Successfully executed get_ticker_details
+2025-03-16 12:30:25,621 - INFO - Successfully executed get_cik
+2025-03-16 12:30:25,622 - INFO - Calling get_financials
+2025-03-16 12:30:26,354 - INFO - Successfully executed get_financials
+2025-03-16 12:30:26,354 - INFO - Calling get_sma
+2025-03-16 12:30:27,069 - INFO - Successfully executed get_sma
+2025-03-16 12:30:27,069 - INFO - Calling sec_search
+2025-03-16 12:30:27,069 - INFO - Calling get_company_facts
+2025-03-16 12:30:29,174 - INFO - Successfully executed get_company_facts
+2025-03-16 12:30:29,174 - INFO - Calling get_company_filings
+2025-03-16 12:30:29,564 - INFO - Successfully executed get_company_filings
+2025-03-16 12:30:29,565 - INFO - Successfully executed sec_search
+2025-03-16 12:30:29,565 - INFO - Calling sec_search
+2025-03-16 12:30:29,565 - INFO - Calling get_company_facts
+2025-03-16 12:30:30,258 - INFO - Successfully executed get_company_facts
+2025-03-16 12:30:30,258 - INFO - Calling get_company_filings
+2025-03-16 12:30:30,629 - INFO - Successfully executed get_company_filings
+2025-03-16 12:30:30,629 - INFO - Successfully executed sec_search
+2025-03-16 12:30:30,636 - INFO - Successfully executed analyze_stock
+2025-03-16 12:31:49,634 - INFO - Calling analyze_stock
+2025-03-16 12:31:49,634 - INFO - Calling get_latest_trading_day
+2025-03-16 12:31:49,634 - INFO - Successfully executed get_latest_trading_day
+2025-03-16 12:31:49,635 - INFO - Calling get_ticker_details
+2025-03-16 12:31:50,393 - INFO - Successfully executed get_ticker_details
+2025-03-16 12:31:50,393 - INFO - Calling get_aggregates
+2025-03-16 12:31:51,074 - INFO - Successfully executed get_aggregates
+2025-03-16 12:31:51,074 - INFO - Calling get_daily_open_close
+2025-03-16 12:31:51,814 - INFO - Successfully executed get_daily_open_close
+2025-03-16 12:31:51,814 - INFO - Calling get_dividends
+2025-03-16 12:31:52,528 - INFO - Successfully executed get_dividends
+2025-03-16 12:31:52,528 - INFO - Calling get_stock_splits
+2025-03-16 12:31:53,675 - INFO - Successfully executed get_stock_splits
+2025-03-16 12:31:53,676 - INFO - Calling get_sma
+2025-03-16 12:31:54,400 - INFO - Successfully executed get_sma
+2025-03-16 12:31:54,400 - INFO - Calling get_ticker_news
+2025-03-16 12:31:55,125 - INFO - Successfully executed get_ticker_news
+2025-03-16 12:31:55,126 - INFO - Calling get_cik
+2025-03-16 12:31:55,126 - INFO - Calling get_ticker_details
+2025-03-16 12:31:55,831 - INFO - Successfully executed get_ticker_details
+2025-03-16 12:31:55,831 - INFO - Successfully executed get_cik
+2025-03-16 12:31:55,832 - INFO - Calling get_financials
+2025-03-16 12:31:56,569 - INFO - Successfully executed get_financials
+2025-03-16 12:31:56,569 - INFO - Calling get_sma
+2025-03-16 12:31:57,291 - INFO - Successfully executed get_sma
+2025-03-16 12:31:57,292 - INFO - Calling sec_search
+2025-03-16 12:31:57,292 - INFO - Calling get_company_facts
+2025-03-16 12:31:57,999 - INFO - Successfully executed get_company_facts
+2025-03-16 12:31:57,999 - INFO - Calling get_company_filings
+2025-03-16 12:31:58,375 - INFO - Successfully executed get_company_filings
+2025-03-16 12:31:58,375 - INFO - Successfully executed sec_search
+2025-03-16 12:31:58,375 - INFO - Calling sec_search
+2025-03-16 12:31:58,375 - INFO - Calling get_company_facts
+2025-03-16 12:31:59,018 - INFO - Successfully executed get_company_facts
+2025-03-16 12:31:59,018 - INFO - Calling get_company_filings
+2025-03-16 12:31:59,400 - INFO - Successfully executed get_company_filings
+2025-03-16 12:31:59,400 - INFO - Successfully executed sec_search
+2025-03-16 12:31:59,402 - INFO - Successfully executed analyze_stock
+2025-03-16 12:45:21,202 - INFO - Calling analyze_stock
+2025-03-16 12:45:21,203 - INFO - Calling get_latest_trading_day
+2025-03-16 12:45:21,204 - INFO - Successfully executed get_latest_trading_day
+2025-03-16 12:45:21,205 - INFO - Calling get_ticker_details
+2025-03-16 12:45:21,970 - INFO - Successfully executed get_ticker_details
+2025-03-16 12:45:21,971 - INFO - Calling get_aggregates
+2025-03-16 12:45:22,694 - INFO - Successfully executed get_aggregates
+2025-03-16 12:45:22,695 - INFO - Calling get_daily_open_close
+2025-03-16 12:45:23,453 - INFO - Successfully executed get_daily_open_close
+2025-03-16 12:45:23,453 - INFO - Calling get_dividends
+2025-03-16 12:45:24,185 - INFO - Successfully executed get_dividends
+2025-03-16 12:45:24,186 - INFO - Calling get_stock_splits
+2025-03-16 12:45:24,910 - INFO - Successfully executed get_stock_splits
+2025-03-16 12:45:24,910 - INFO - Calling get_sma
+2025-03-16 12:45:25,649 - INFO - Successfully executed get_sma
+2025-03-16 12:45:25,650 - INFO - Calling get_ticker_news
+2025-03-16 12:45:26,404 - INFO - Successfully executed get_ticker_news
+2025-03-16 12:45:26,404 - INFO - Calling get_cik
+2025-03-16 12:45:26,405 - INFO - Calling get_ticker_details
+2025-03-16 12:45:27,128 - INFO - Successfully executed get_ticker_details
+2025-03-16 12:45:27,128 - INFO - Successfully executed get_cik
+2025-03-16 12:45:27,129 - INFO - Calling get_financials
+2025-03-16 12:45:27,809 - INFO - Successfully executed get_financials
+2025-03-16 12:45:27,810 - INFO - Calling get_sma
+2025-03-16 12:45:28,542 - INFO - Successfully executed get_sma
+2025-03-16 12:45:28,543 - INFO - Calling sec_search
+2025-03-16 12:45:28,543 - INFO - Calling get_company_facts
+2025-03-16 12:45:29,637 - INFO - Successfully executed get_company_facts
+2025-03-16 12:45:29,638 - INFO - Calling get_company_filings
+2025-03-16 12:45:30,059 - INFO - Successfully executed get_company_filings
+2025-03-16 12:45:30,060 - INFO - Successfully executed sec_search
+2025-03-16 12:45:30,060 - INFO - Calling sec_search
+2025-03-16 12:45:30,061 - INFO - Calling get_company_facts
+2025-03-16 12:45:30,771 - INFO - Successfully executed get_company_facts
+2025-03-16 12:45:30,771 - INFO - Calling get_company_filings
+2025-03-16 12:45:31,227 - INFO - Successfully executed get_company_filings
+2025-03-16 12:45:31,228 - INFO - Successfully executed sec_search
+2025-03-16 12:45:31,236 - INFO - Successfully executed analyze_stock
+2025-03-16 12:45:55,552 - INFO - Calling analyze_stock
+2025-03-16 12:45:55,555 - INFO - Calling get_latest_trading_day
+2025-03-16 12:45:55,555 - INFO - Successfully executed get_latest_trading_day
+2025-03-16 12:45:55,555 - INFO - Calling get_ticker_details
+2025-03-16 12:45:56,316 - INFO - Successfully executed get_ticker_details
+2025-03-16 12:45:56,318 - INFO - Calling get_aggregates
+2025-03-16 12:45:57,116 - INFO - Successfully executed get_aggregates
+2025-03-16 12:45:57,117 - INFO - Calling get_daily_open_close
+2025-03-16 12:45:57,836 - INFO - Successfully executed get_daily_open_close
+2025-03-16 12:45:57,836 - INFO - Calling get_dividends
+2025-03-16 12:45:58,541 - INFO - Successfully executed get_dividends
+2025-03-16 12:45:58,542 - INFO - Calling get_stock_splits
+2025-03-16 12:45:59,310 - INFO - Successfully executed get_stock_splits
+2025-03-16 12:45:59,311 - INFO - Calling get_sma
+2025-03-16 12:46:00,043 - INFO - Successfully executed get_sma
+2025-03-16 12:46:00,043 - INFO - Calling get_ticker_news
+2025-03-16 12:46:00,771 - INFO - Successfully executed get_ticker_news
+2025-03-16 12:46:00,773 - INFO - Calling get_cik
+2025-03-16 12:46:00,774 - INFO - Calling get_ticker_details
+2025-03-16 12:46:01,532 - INFO - Successfully executed get_ticker_details
+2025-03-16 12:46:01,533 - INFO - Successfully executed get_cik
+2025-03-16 12:46:01,533 - INFO - Calling get_financials
+2025-03-16 12:46:02,283 - INFO - Successfully executed get_financials
+2025-03-16 12:46:02,283 - INFO - Calling get_sma
+2025-03-16 12:46:03,042 - INFO - Successfully executed get_sma
+2025-03-16 12:46:03,043 - INFO - Calling sec_search
+2025-03-16 12:46:03,043 - INFO - Calling get_company_facts
+2025-03-16 12:46:03,783 - INFO - Successfully executed get_company_facts
+2025-03-16 12:46:03,783 - INFO - Calling get_company_filings
+2025-03-16 12:46:04,212 - INFO - Successfully executed get_company_filings
+2025-03-16 12:46:04,213 - INFO - Successfully executed sec_search
+2025-03-16 12:46:04,213 - INFO - Calling sec_search
+2025-03-16 12:46:04,213 - INFO - Calling get_company_facts
+2025-03-16 12:46:04,880 - INFO - Successfully executed get_company_facts
+2025-03-16 12:46:04,881 - INFO - Calling get_company_filings
+2025-03-16 12:46:05,253 - INFO - Successfully executed get_company_filings
+2025-03-16 12:46:05,255 - INFO - Successfully executed sec_search
+2025-03-16 12:46:05,262 - INFO - Successfully executed analyze_stock
+2025-03-16 12:48:49,110 - INFO - Calling analyze_stock
+2025-03-16 12:48:49,112 - INFO - Calling get_latest_trading_day
+2025-03-16 12:48:49,113 - INFO - Successfully executed get_latest_trading_day
+2025-03-16 12:48:49,113 - INFO - Calling get_ticker_details
+2025-03-16 12:48:49,916 - INFO - Successfully executed get_ticker_details
+2025-03-16 12:48:49,917 - INFO - Calling get_aggregates
+2025-03-16 12:48:50,644 - INFO - Successfully executed get_aggregates
+2025-03-16 12:48:50,645 - INFO - Calling get_daily_open_close
+2025-03-16 12:48:51,346 - INFO - Successfully executed get_daily_open_close
+2025-03-16 12:48:51,346 - INFO - Calling get_dividends
+2025-03-16 12:48:52,061 - INFO - Successfully executed get_dividends
+2025-03-16 12:48:52,061 - INFO - Calling get_stock_splits
+2025-03-16 12:48:52,913 - INFO - Successfully executed get_stock_splits
+2025-03-16 12:48:52,915 - INFO - Calling get_sma
+2025-03-16 12:48:53,618 - INFO - Successfully executed get_sma
+2025-03-16 12:48:53,618 - INFO - Calling get_ticker_news
+2025-03-16 12:48:54,354 - INFO - Successfully executed get_ticker_news
+2025-03-16 12:48:54,354 - INFO - Calling get_cik
+2025-03-16 12:48:54,355 - INFO - Calling get_ticker_details
+2025-03-16 12:48:55,065 - INFO - Successfully executed get_ticker_details
+2025-03-16 12:48:55,066 - INFO - Successfully executed get_cik
+2025-03-16 12:48:55,066 - INFO - Calling get_financials
+2025-03-16 12:48:55,787 - INFO - Successfully executed get_financials
+2025-03-16 12:48:55,789 - INFO - Calling get_sma
+2025-03-16 12:48:56,470 - INFO - Successfully executed get_sma
+2025-03-16 12:48:56,471 - INFO - Calling sec_search
+2025-03-16 12:48:56,471 - INFO - Calling get_company_facts
+2025-03-16 12:48:57,511 - INFO - Successfully executed get_company_facts
+2025-03-16 12:48:57,511 - INFO - Calling get_company_filings
+2025-03-16 12:48:57,878 - INFO - Successfully executed get_company_filings
+2025-03-16 12:48:57,878 - INFO - Successfully executed sec_search
+2025-03-16 12:48:57,879 - INFO - Calling sec_search
+2025-03-16 12:48:57,879 - INFO - Calling get_company_facts
+2025-03-16 12:48:58,535 - INFO - Successfully executed get_company_facts
+2025-03-16 12:48:58,535 - INFO - Calling get_company_filings
+2025-03-16 12:48:58,901 - INFO - Successfully executed get_company_filings
+2025-03-16 12:48:58,901 - INFO - Successfully executed sec_search
+2025-03-16 12:48:58,906 - INFO - Successfully executed analyze_stock
+2025-03-16 17:41:13,621 - INFO - Calling analyze_stock
+2025-03-16 17:41:13,623 - INFO - Calling get_latest_trading_day
+2025-03-16 17:41:13,623 - INFO - Successfully executed get_latest_trading_day
+2025-03-16 17:41:13,623 - INFO - Calling get_ticker_details
+2025-03-16 17:41:14,437 - INFO - Successfully executed get_ticker_details
+2025-03-16 17:41:14,438 - INFO - Calling get_aggregates
+2025-03-16 17:41:15,162 - INFO - Successfully executed get_aggregates
+2025-03-16 17:41:15,162 - INFO - Calling get_daily_open_close
+2025-03-16 17:41:15,906 - INFO - Successfully executed get_daily_open_close
+2025-03-16 17:41:15,907 - INFO - Calling get_dividends
+2025-03-16 17:41:16,622 - INFO - Successfully executed get_dividends
+2025-03-16 17:41:16,623 - INFO - Calling get_stock_splits
+2025-03-16 17:41:17,364 - INFO - Successfully executed get_stock_splits
+2025-03-16 17:41:17,365 - INFO - Calling get_sma
+2025-03-16 17:41:18,130 - INFO - Successfully executed get_sma
+2025-03-16 17:41:18,131 - INFO - Calling get_ticker_news
+2025-03-16 17:41:18,876 - INFO - Successfully executed get_ticker_news
+2025-03-16 17:41:18,878 - INFO - Calling get_cik
+2025-03-16 17:41:18,878 - INFO - Calling get_ticker_details
+2025-03-16 17:41:19,579 - INFO - Successfully executed get_ticker_details
+2025-03-16 17:41:19,580 - INFO - Successfully executed get_cik
+2025-03-16 17:41:19,580 - INFO - Calling get_financials
+2025-03-16 17:41:20,290 - INFO - Successfully executed get_financials
+2025-03-16 17:41:20,291 - INFO - Calling get_sma
+2025-03-16 17:41:21,040 - INFO - Successfully executed get_sma
+2025-03-16 17:41:21,041 - INFO - Calling sec_search
+2025-03-16 17:41:21,041 - INFO - Calling get_company_facts
+2025-03-16 17:41:24,789 - INFO - Successfully executed get_company_facts
+2025-03-16 17:41:24,789 - INFO - Calling get_company_filings
+2025-03-16 17:41:25,259 - INFO - Successfully executed get_company_filings
+2025-03-16 17:41:25,259 - INFO - Successfully executed sec_search
+2025-03-16 17:41:25,260 - INFO - Calling sec_search
+2025-03-16 17:41:25,260 - INFO - Calling get_company_facts
+2025-03-16 17:41:26,033 - INFO - Successfully executed get_company_facts
+2025-03-16 17:41:26,034 - INFO - Calling get_company_filings
+2025-03-16 17:41:26,476 - INFO - Successfully executed get_company_filings
+2025-03-16 17:41:26,480 - INFO - Successfully executed sec_search
+2025-03-16 17:41:26,487 - INFO - Successfully executed analyze_stock
+2025-03-16 17:43:22,835 - INFO - Calling analyze_stock
+2025-03-16 17:43:22,837 - INFO - Calling get_latest_trading_day
+2025-03-16 17:43:22,837 - INFO - Successfully executed get_latest_trading_day
+2025-03-16 17:43:22,837 - INFO - Calling get_ticker_details
+2025-03-16 17:43:23,581 - INFO - Successfully executed get_ticker_details
+2025-03-16 17:43:23,582 - INFO - Calling get_aggregates
+2025-03-16 17:43:24,297 - INFO - Successfully executed get_aggregates
+2025-03-16 17:43:24,298 - INFO - Calling get_daily_open_close
+2025-03-16 17:43:25,083 - INFO - Successfully executed get_daily_open_close
+2025-03-16 17:43:25,084 - INFO - Calling get_dividends
+2025-03-16 17:43:25,802 - INFO - Successfully executed get_dividends
+2025-03-16 17:43:25,803 - INFO - Calling get_stock_splits
+2025-03-16 17:43:26,568 - INFO - Successfully executed get_stock_splits
+2025-03-16 17:43:26,569 - INFO - Calling get_sma
+2025-03-16 17:43:27,293 - INFO - Successfully executed get_sma
+2025-03-16 17:43:27,294 - INFO - Calling get_ticker_news
+2025-03-16 17:43:28,038 - INFO - Successfully executed get_ticker_news
+2025-03-16 17:43:28,039 - INFO - Calling get_cik
+2025-03-16 17:43:28,039 - INFO - Calling get_ticker_details
+2025-03-16 17:43:28,758 - INFO - Successfully executed get_ticker_details
+2025-03-16 17:43:28,759 - INFO - Successfully executed get_cik
+2025-03-16 17:43:28,760 - INFO - Calling get_financials
+2025-03-16 17:43:29,498 - INFO - Successfully executed get_financials
+2025-03-16 17:43:29,499 - INFO - Calling get_sma
+2025-03-16 17:43:30,394 - INFO - Successfully executed get_sma
+2025-03-16 17:43:30,395 - INFO - Calling sec_search
+2025-03-16 17:43:30,395 - INFO - Calling get_company_facts
+2025-03-16 17:43:31,394 - INFO - Successfully executed get_company_facts
+2025-03-16 17:43:31,394 - INFO - Calling get_company_filings
+2025-03-16 17:43:32,014 - INFO - Successfully executed get_company_filings
+2025-03-16 17:43:32,015 - INFO - Successfully executed sec_search
+2025-03-16 17:43:32,015 - INFO - Calling sec_search
+2025-03-16 17:43:32,015 - INFO - Calling get_company_facts
+2025-03-16 17:43:32,843 - INFO - Successfully executed get_company_facts
+2025-03-16 17:43:32,843 - INFO - Calling get_company_filings
+2025-03-16 17:43:33,380 - INFO - Successfully executed get_company_filings
+2025-03-16 17:43:33,380 - INFO - Successfully executed sec_search
+2025-03-16 17:43:33,390 - INFO - Successfully executed analyze_stock

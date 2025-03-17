@@ -12,117 +12,92 @@ import re
 import uuid
 from typing import Dict, List, Any, Optional
 import traceback
+import logging
+from bson import json_util
 
 import sys
 
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("mongodb_ui.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger("mongodb_ui")
 
-# Import your actual database system components
-from dbInterface import DatabaseExplorer
-from DB_Interfaces.mongoDBExplorer import MongoDBExplorer
-from DB_Interfaces.SQLDBExplorer import SQLDatabaseExplorer
-from DBAgnosticAgent import DatabaseAgentSystem
+# Import MongoDB agent system components
+from mongoDBExplorer import MongoDBExplorer
+from DBAgent import MongoDBAgentSystem
+from response_capture import ResponseCapture, patch_agent_system
 
-# Utility function to create a database explorer with simplified connection
-def get_database_explorer(db_type: str, connection_string: str, db_name: str = None) -> DatabaseExplorer:
-    """Create the appropriate database explorer based on type and connection string"""
+# Utility function to create a MongoDB explorer
+def get_mongodb_explorer(connection_string: str, db_name: str = None) -> MongoDBExplorer:
+    """Create a MongoDB explorer with connection string and database name"""
     try:
-        if db_type == "MongoDB":
-            # Create MongoDB explorer with connection string and db_name
-            if not db_name:
-                # Try to extract db_name from connection string if not provided separately
-                # MongoDB connection strings typically follow this pattern: mongodb://user:password@host:port/database
-                try:
-                    from urllib.parse import urlparse
-                    parsed_uri = urlparse(connection_string)
-                    auto_db_name = parsed_uri.path.strip('/')
-                    if auto_db_name:
-                        db_name = auto_db_name
-                    else:
-                        raise ValueError("Database name is required but could not be extracted from connection string")
-                except Exception as e:
-                    raise ValueError(f"Database name is required: {str(e)}")
+        if not db_name:
+            # Try to extract db_name from connection string if not provided separately
+            # MongoDB connection strings typically follow this pattern: mongodb://user:password@host:port/database
+            try:
+                from urllib.parse import urlparse
+                parsed_uri = urlparse(connection_string)
+                auto_db_name = parsed_uri.path.strip('/')
+                if auto_db_name:
+                    db_name = auto_db_name
+                    logger.info(f"Extracted database name from connection string: {db_name}")
+                else:
+                    raise ValueError("Database name is required but could not be extracted from connection string")
+            except Exception as e:
+                logger.error(f"Error extracting database name: {str(e)}")
+                raise ValueError(f"Database name is required: {str(e)}")
                     
-            return MongoDBExplorer(db_name=db_name, connection_string=connection_string)
+        # Create the MongoDB explorer
+        logger.info(f"Creating MongoDB explorer for database: {db_name}")
+        mongodb_explorer = MongoDBExplorer(db_name=db_name, connection_string=connection_string)
+        
+        # Test the connection
+        if not mongodb_explorer.db_client.ping():
+            raise ConnectionError("Could not establish a connection to MongoDB server")
             
-        elif db_type == "SQL (MySQL/PostgreSQL)" or db_type == "SQLite":
-            # Create SQL explorer directly from connection string
-            return SQLDatabaseExplorer(connection_string=connection_string)
-            
-        else:
-            raise ValueError(f"Unsupported database type: {db_type}")
+        return mongodb_explorer
             
     except Exception as e:
-        st.error(f"Failed to create database explorer: {str(e)}")
+        error_msg = f"Failed to create MongoDB explorer: {str(e)}"
+        logger.error(error_msg)
         traceback.print_exc()
         raise e
 
-
-# Custom Response Capture Class
-class ResponseCapture:
-    """Captures responses from the agent system's conversation"""
+# Create a custom wrapper for the MongoDBAgentSystem that captures responses for Streamlit UI
+class StreamlitMongoDBAgent:
+    """A wrapper around MongoDBAgentSystem that captures responses for Streamlit UI"""
     
-    def __init__(self):
-        self.responses = []
-        self.latest_response = None
-        
-    def capture_response(self, sender, message, metadata=None):
-        """Capture a response from an agent in the conversation"""
-        response = {
-            "agent": sender,
-            "content": message,
-            "type": "text",
-            "time": datetime.now().strftime("%H:%M:%S"),
-            "metadata": metadata or {}
-        }
-        
-        # Check if the message contains data (table/DataFrame)
-        if metadata and "data" in metadata:
-            response["type"] = "data"
-            response["data"] = metadata["data"]
+    def __init__(self, connection_string: str, db_name: str, openai_model: str, openai_key: str):
+        """Initialize with MongoDB connection parameters and OpenAI credentials"""
+        try:
+            # Create the agent system using the new wrapper
+            self.agent_system = MongoDBAgentSystem(
+                connection_string=connection_string,
+                db_name=db_name,
+                openai_model=openai_model,
+                openai_key=openai_key
+            )
             
-        # Check if the message contains a visualization
-        if metadata and "visualization" in metadata:
-            response["type"] = "visualization"
-            response["visualization"] = metadata["visualization"]
+            # Create response capture
+            self.response_capture = ResponseCapture()
             
-        self.responses.append(response)
-        self.latest_response = response
-        return response
-
-# Create a custom wrapper for the DatabaseAgentSystem
-class StreamlitDatabaseAgent:
-    """A wrapper around DatabaseAgentSystem that captures responses for Streamlit UI"""
-    
-    def __init__(self, db_explorer: DatabaseExplorer, openai_model: str, openai_key: str):
-        """Initialize with database explorer and OpenAI credentials"""
-        self.agent_system = DatabaseAgentSystem(
-            db_explorer=db_explorer,
-            openai_model=openai_model,
-            openai_key=openai_key
-        )
-        self.response_capture = ResponseCapture()
-        self.register_response_listeners()
-        
-    def register_response_listeners(self):
-        """Register listeners for agent responses"""
-        # This requires modifying your DatabaseAgentSystem class to support response listeners
-        # Example of what to add to your existing class:
-        # 
-        # def add_response_listener(self, listener_function):
-        #     self.response_listeners.append(listener_function)
-        #
-        # def notify_listeners(self, sender, message, metadata=None):
-        #     for listener in self.response_listeners:
-        #         listener(sender, message, metadata)
-        
-        # If your system already supports some form of response capturing,
-        # connect it to the response_capture.capture_response method
-        
-        # For now, we'll assume you've added this functionality
-        self.agent_system.add_response_listener(self.response_capture.capture_response)
+            # Register the response capture as a listener
+            self.agent_system.add_response_listener(self.response_capture)
+            
+        except Exception as e:
+            error_msg = f"Error initializing StreamlitMongoDBAgent: {str(e)}"
+            logger.error(error_msg)
+            traceback.print_exc()
+            raise e
         
     def get_response(self, message: str) -> Dict:
         """Process a message and return the response"""
@@ -131,52 +106,49 @@ class StreamlitDatabaseAgent:
             self.response_capture.latest_response = None
             
             # Start the interaction
+            logger.info(f"Processing message: {message[:50]}...")
             self.agent_system.start_interaction(message)
             
             # Return the captured response
             if self.response_capture.latest_response:
-                return self.response_capture.latest_response
+                # Ensure response has the required fields
+                response = self.response_capture.latest_response
+                if "role" not in response:
+                    response["role"] = "assistant"
+                    
+                logger.info(f"Response received from agent: {response.get('agent', 'Unknown')}")
+                return response
             else:
                 # If no response was captured, create a default one
+                logger.warning("No response was captured from the agent system")
                 return {
                     "agent": "System",
                     "content": "I processed your request but didn't generate a specific response.",
+                    "role": "assistant",
                     "type": "text",
                     "time": datetime.now().strftime("%H:%M:%S")
                 }
                 
         except Exception as e:
             # Log the full error for debugging
-            st.error(f"Error processing message: {str(e)}")
+            error_msg = f"Error processing message: {str(e)}"
+            logger.error(error_msg)
             traceback.print_exc()
             
             # Return an error response
             return {
                 "agent": "System",
                 "content": f"Error processing message: {str(e)}",
+                "role": "assistant",
                 "type": "text",
                 "time": datetime.now().strftime("%H:%M:%S")
             }
-
-# Function to create and configure the agent system
-def create_agent_system(db_explorer: DatabaseExplorer, openai_model: str, openai_key: str) -> StreamlitDatabaseAgent:
-    """Create and configure the agent system with the database explorer"""
-    try:
-        # Create the custom agent wrapper
-        return StreamlitDatabaseAgent(
-            db_explorer=db_explorer,
-            openai_model=openai_model,
-            openai_key=openai_key
-        )
-    except Exception as e:
-        st.error(f"Failed to create agent system: {str(e)}")
-        raise e
 
 # Main application function
 def main():
     # Set page configuration
     st.set_page_config(
-        page_title="Database AI Agent",
+        page_title="MongoDB AI Agent",
         page_icon="🤖",
         layout="wide",
         initial_sidebar_state="expanded"
@@ -193,19 +165,21 @@ def main():
         st.session_state.messages = []
     if 'db_connected' not in st.session_state:
         st.session_state.db_connected = False
-    if 'db_explorer' not in st.session_state:
-        st.session_state.db_explorer = None
+    if 'db_name' not in st.session_state:
+        st.session_state.db_name = None
+    if 'connection_string' not in st.session_state:
+        st.session_state.connection_string = None
     if 'conversation_id' not in st.session_state:
         st.session_state.conversation_id = str(uuid.uuid4())
     if 'api_key_valid' not in st.session_state:
         st.session_state.api_key_valid = False
     
     # Main header
-    st.markdown('<h1 class="main-header">🤖 Database AI Agent</h1>', unsafe_allow_html=True)
-    st.markdown('An intelligent multi-agent system for database exploration, analysis, and visualization.')
+    st.markdown('<h1 class="main-header">🤖 MongoDB AI Agent</h1>', unsafe_allow_html=True)
+    st.markdown('An intelligent multi-agent system for MongoDB database exploration, analysis, and visualization.')
     
     # Create tabs
-    tab1, tab2, tab3 = st.tabs(["Connection", "Chat Interface", "History"])
+    tab1, tab2, tab3 = st.tabs(["MongoDB Connection", "Chat Interface", "History"])
     
     with tab1:
         # Database connection tab
@@ -222,191 +196,64 @@ def main():
     # Footer
     render_footer()
 
-# def render_connection_tab():
-#     """Render the database connection tab with simplified connection string input"""
-#     st.markdown('<h2 class="sub-header">Database Connection</h2>', unsafe_allow_html=True)
-    
-#     # Database configuration form
-#     with st.form(key='database_form', clear_on_submit=False):
-#         st.markdown('<div class="database-form">', unsafe_allow_html=True)
-        
-#         # Database Type selection
-#         db_type = st.selectbox(
-#             "Database Type",
-#             ["MongoDB", "SQL (MySQL/PostgreSQL)", "SQLite"],
-#             help="Select your database type"
-#         )
-        
-#         # Connection string input with appropriate examples based on database type
-#         if db_type == "MongoDB":
-#             connection_example = "mongodb://username:password@localhost:27017/database_name"
-#             connection_help = "Example: mongodb://localhost:27017/mydatabase or mongodb://username:password@host:port/database"
-#         elif db_type == "SQL (MySQL/PostgreSQL)":
-#             connection_example = "mysql+pymysql://username:password@localhost:3306/database_name"
-#             connection_help = "MySQL: mysql+pymysql://username:password@host:port/database\nPostgreSQL: postgresql://username:password@host:port/database"
-#         elif db_type == "SQLite":
-#             connection_example = "sqlite:///path/to/database.db"
-#             connection_help = "Example: sqlite:///mydatabase.db or sqlite:////absolute/path/to/database.db"
-        
-#         # Connection string input
-#         connection_string = st.text_input(
-#             "Connection String", 
-#             placeholder=connection_example,
-#             help=connection_help
-#         )
-        
-#         # Add info about connection strings
-#         with st.expander("Connection String Help"):
-#             if db_type == "MongoDB":
-#                 st.markdown("""
-#                 **MongoDB Connection String Format:**
-#                 ```
-#                 mongodb://[username:password@]host[:port]/database[?options]
-#                 ```
-                
-#                 **Examples:**
-#                 - Simple connection: `mongodb://localhost:27017/mydatabase`
-#                 - With authentication: `mongodb://myusername:mypassword@localhost:27017/mydatabase`
-#                 - Multiple hosts (replica set): `mongodb://host1:27017,host2:27017/mydatabase?replicaSet=myrs`
-#                 """)
-#             elif db_type == "SQL (MySQL/PostgreSQL)":
-#                 st.markdown("""
-#                 **MySQL Connection String Format:**
-#                 ```
-#                 mysql+pymysql://username:password@host:port/database
-#                 ```
-                
-#                 **PostgreSQL Connection String Format:**
-#                 ```
-#                 postgresql://username:password@host:port/database
-#                 ```
-                
-#                 **Examples:**
-#                 - MySQL: `mysql+pymysql://root:mypassword@localhost:3306/mydatabase`
-#                 - PostgreSQL: `postgresql://postgres:mypassword@localhost:5432/mydatabase`
-#                 """)
-#             elif db_type == "SQLite":
-#                 st.markdown("""
-#                 **SQLite Connection String Format:**
-#                 ```
-#                 sqlite:///path/to/database.db
-#                 ```
-                
-#                 **Examples:**
-#                 - Relative path: `sqlite:///mydatabase.db`
-#                 - Absolute path: `sqlite:////absolute/path/to/mydatabase.db`
-#                 - In-memory database: `sqlite:///:memory:`
-#                 """)
-        
-#         # OpenAI Configuration
-#         st.markdown("#### OpenAI Configuration")
-#         col1, col2 = st.columns(2)
-#         with col1:
-#             openai_model = st.selectbox(
-#                 "OpenAI Model",
-#                 ["gpt-4-turbo", "gpt-4", "gpt-3.5-turbo","gpt-4o-mini"],
-#                 help="Select the OpenAI model to use"
-#             )
-#         with col2:
-#             openai_key = st.text_input("OpenAI API Key", type="password", help="Your OpenAI API key")
-#             # Option to load from environment variable
-#             use_env_var = st.checkbox("Use OPENAI_API_KEY environment variable", 
-#                                      help="Load API key from environment variable")
-#             if use_env_var:
-#                 openai_key = os.environ.get("OPENAI_API_KEY", "")
-        
-#         st.markdown('</div>', unsafe_allow_html=True)
-        
-#         # Submit button
-#         submit_button = st.form_submit_button(label="Connect to Database")
-        
-#         if submit_button:
-#             # Validate inputs
-#             if not connection_string:
-#                 st.error("Connection string is required")
-#             elif not openai_key:
-#                 st.error("OpenAI API Key is required")
-#             else:
-#                 with st.spinner("Connecting to database..."):
-#                     try:
-#                         # Create database explorer with connection string
-#                         db_explorer = get_database_explorer(db_type, connection_string)
-#                         st.session_state.db_explorer = db_explorer
-                        
-#                         # Create agent system
-#                         agent_system = create_agent_system(db_explorer, openai_model, openai_key)
-#                         st.session_state.agent = agent_system
-                        
-#                         # Set connected flag
-#                         st.session_state.db_connected = True
-#                         st.session_state.api_key_valid = True
-                        
-#                         st.success(f"Successfully connected to {db_type} database!")
-                        
-#                         # Add initial system message
-#                         st.session_state.messages.append({
-#                             "role": "system",
-#                             "content": f"Connected to {db_type} database. I'm ready to help you explore and analyze your data!",
-#                             "type": "text",
-#                             "time": datetime.now().strftime("%H:%M:%S")
-#                         })
-                        
-#                     except Exception as e:
-#                         st.error(f"Failed to connect to database: {str(e)}")
-#                         traceback.print_exc()
-    
-#     # Connection status indicator
-#     st.markdown("### Connection Status")
-#     col1, col2 = st.columns(2)
-#     with col1:
-#         if st.session_state.db_connected:
-#             st.success("✅ Connected to Database")
-#         else:
-#             st.error("❌ Not Connected")
-#     with col2:
-#         if st.session_state.api_key_valid:
-#             st.success("✅ OpenAI API Key Valid")
-#         else:
-#             st.error("❌ OpenAI API Key Not Verified")
-
 def render_connection_tab():
-    """Render the database connection tab with simplified connection string input"""
-    st.markdown('<h2 class="sub-header">Database Connection</h2>', unsafe_allow_html=True)
+    """Render the MongoDB connection tab"""
+    st.markdown('<h2 class="sub-header">MongoDB Connection</h2>', unsafe_allow_html=True)
     
     # Database configuration form
-    with st.form(key='database_form', clear_on_submit=False):
+    with st.form(key='mongodb_form', clear_on_submit=False):
         st.markdown('<div class="database-form">', unsafe_allow_html=True)
         
-        # Database Type selection
-        db_type = st.selectbox(
-            "Database Type",
-            ["MongoDB", "SQL (MySQL/PostgreSQL)", "SQLite"],
-            help="Select your database type"
+        # MongoDB connection info
+        st.markdown("#### MongoDB Connection Information")
+        
+        connection_string = st.text_input(
+            "MongoDB Connection String", 
+            placeholder="mongodb://username:password@localhost:27017/database_name",
+            help="Example: mongodb://localhost:27017/mydatabase or mongodb+srv://username:password@cluster.mongodb.net/database"
         )
         
-        # Connection string input with appropriate examples based on database type
-        if db_type == "MongoDB":
-            connection_example = "mongodb://username:password@localhost:27017/database_name"
-            connection_help = "Example: mongodb://localhost:27017/mydatabase or mongodb://username:password@host:port/database"
-            # Add database name input field for MongoDB
-            db_name = st.text_input(
-                "Database Name (leave blank to extract from connection string)",
-                help="The name of the MongoDB database to connect to"
-            )
-        elif db_type == "SQL (MySQL/PostgreSQL)":
-            connection_example = "mysql+pymysql://username:password@localhost:3306/database_name"
-            connection_help = "MySQL: mysql+pymysql://username:password@host:port/database\nPostgreSQL: postgresql://username:password@host:port/database"
-            db_name = None  # Not needed for SQL as it's in the connection string
-        elif db_type == "SQLite":
-            connection_example = "sqlite:///path/to/database.db"
-            connection_help = "Example: sqlite:///mydatabase.db or sqlite:////absolute/path/to/database.db"
-            db_name = None  # Not needed for SQLite
+        db_name = st.text_input(
+            "Database Name (leave blank to extract from connection string)",
+            help="The name of the MongoDB database to connect to"
+        )
         
-        # Connection string input
-        connection_string = st.text_input(
-            "Connection String", 
-            placeholder=connection_example,
-            help=connection_help
+        # Add info about connection strings
+        with st.expander("MongoDB Connection String Help"):
+            st.markdown("""
+            **MongoDB Connection String Format:**
+            ```
+            mongodb://[username:password@]host[:port]/database[?options]
+            ```
+            
+            **Atlas Connection String Format:**
+            ```
+            mongodb+srv://[username:password@]cluster.example.com/database[?options]
+            ```
+            
+            **Examples:**
+            - Simple connection: `mongodb://localhost:27017/mydatabase`
+            - With authentication: `mongodb://myusername:mypassword@localhost:27017/mydatabase`
+            - Atlas connection: `mongodb+srv://username:password@cluster.mongodb.net/mydatabase`
+            - Multiple hosts (replica set): `mongodb://host1:27017,host2:27017/mydatabase?replicaSet=myrs`
+            """)
+            
+            st.markdown("""
+            **Important Security Notes:**
+            - The connection string should include the database name
+            - For Atlas connections, use the connection string from the Atlas dashboard
+            - Use a read-only user if possible for security
+            """)
+        
+        # Connection options
+        st.markdown("#### Connection Options")
+        
+        connect_timeout = st.slider(
+            "Connection Timeout (seconds)",
+            min_value=5,
+            max_value=60,
+            value=30,
+            help="Timeout for MongoDB connection attempts"
         )
         
         # OpenAI Configuration
@@ -415,7 +262,8 @@ def render_connection_tab():
         with col1:
             openai_model = st.selectbox(
                 "OpenAI Model",
-                ["gpt-4-turbo", "gpt-4", "gpt-3.5-turbo","gpt-4o-mini"],
+                ["gpt-4o", "gpt-4-turbo", "gpt-4", "gpt-3.5-turbo", "gpt-4o-mini"],
+                index=4,  # Default to gpt-4o-mini as it's most cost-effective
                 help="Select the OpenAI model to use"
             )
         with col2:
@@ -427,50 +275,102 @@ def render_connection_tab():
                 openai_key = os.environ.get("OPENAI_API_KEY", "")
         
         # Submit button
-        submit_button = st.form_submit_button(label="Connect to Database")
+        submit_button = st.form_submit_button(label="Connect to MongoDB")
         
         if submit_button:
             # Validate inputs
             if not connection_string:
-                st.error("Connection string is required")
-            elif db_type == "MongoDB" and not (db_name or "/" in connection_string):
-                st.error("For MongoDB, either provide a database name or include it in the connection string")
+                st.error("MongoDB connection string is required")
+            elif not (db_name or "/" in connection_string):
+                st.error("Either provide a database name or include it in the connection string")
             elif not openai_key:
                 st.error("OpenAI API Key is required")
             else:
-                with st.spinner("Connecting to database..."):
+                with st.spinner("Connecting to MongoDB..."):
                     try:
-                        # Create database explorer with connection string and db_name
-                        db_explorer = get_database_explorer(db_type, connection_string, db_name if db_type == "MongoDB" else None)
-                        st.session_state.db_explorer = db_explorer
+                        # Store connection parameters in session state
+                        st.session_state.connection_string = connection_string
+                        st.session_state.db_name = db_name
                         
-                        # Create agent system
-                        agent_system = create_agent_system(db_explorer, openai_model, openai_key)
+                        # Create agent system directly with connection string and db_name
+                        agent_system = StreamlitMongoDBAgent(
+                            connection_string=connection_string,
+                            db_name=db_name,
+                            openai_model=openai_model,
+                            openai_key=openai_key
+                        )
+                        
+                        # Store the agent in session state
                         st.session_state.agent = agent_system
                         
-                        # Set connected flag
+                        # Set connection flags
                         st.session_state.db_connected = True
                         st.session_state.api_key_valid = True
                         
-                        st.success(f"Successfully connected to {db_type} database!")
+                        # Add database name to session state
+                        if db_name:
+                            display_db_name = db_name
+                        else:
+                            # Extract from connection string
+                            from urllib.parse import urlparse
+                            parsed_uri = urlparse(connection_string)
+                            display_db_name = parsed_uri.path.strip('/')
+                        
+                        st.success(f"Successfully connected to MongoDB database: {display_db_name}")
                         
                         # Add initial system message
                         st.session_state.messages.append({
                             "role": "system",
-                            "content": f"Connected to {db_type} database. I'm ready to help you explore and analyze your data!",
+                            "content": f"Connected to MongoDB database: {display_db_name}. I'm ready to help you explore and analyze your MongoDB data!",
                             "type": "text",
                             "time": datetime.now().strftime("%H:%M:%S")
                         })
                         
                     except Exception as e:
-                        st.error(f"Failed to connect to database: {str(e)}")
-                        traceback.print_exc()
-
+                        st.error(f"Failed to connect to MongoDB: {str(e)}")
+                        
+                        # Show more detailed error information in an expander
+                        with st.expander("Error Details"):
+                            st.code(traceback.format_exc())
+    
+    # Connection status indicator
+    st.markdown("### Connection Status")
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.session_state.db_connected:
+            st.success("✅ Connected to MongoDB")
+            
+            # Show connection info
+            if st.session_state.db_name:
+                st.info(f"Database: {st.session_state.db_name}")
+        else:
+            st.error("❌ Not Connected to MongoDB")
+    with col2:
+        if st.session_state.api_key_valid:
+            st.success("✅ OpenAI API Key Valid")
+        else:
+            st.error("❌ OpenAI API Key Not Verified")
+            
+    # Connection test button (to verify connection is still active)
+    if st.session_state.db_connected and st.button("Test MongoDB Connection"):
+        try:
+            # Get connection status using the agent
+            status_message = st.session_state.agent.get_response("Check the MongoDB connection status")
+            
+            if "error" in status_message.get("content", "").lower():
+                st.error(status_message.get("content"))
+                st.session_state.db_connected = False
+            else:
+                st.success("MongoDB connection is active")
+                
+        except Exception as e:
+            st.error(f"Connection test failed: {str(e)}")
+            st.session_state.db_connected = False
 
 
 def render_chat_tab():
     """Render the chat interface tab"""
-    st.markdown('<h2 class="sub-header">Chat Interface</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header">MongoDB Chat Interface</h2>', unsafe_allow_html=True)
     
     # Chat interface
     chat_container = st.container()
@@ -487,20 +387,20 @@ def render_chat_tab():
                 agent_class = ""
                 agent_name = message.get("agent", "System")
                 
-                if agent_name == "DatabaseExplorer":
+                if agent_name == "MongoDBExplorer":
                     agent_class = "agent-explorer"
-                    agent_display = "Explorer"
-                elif agent_name == "QuerySpecialist":
+                    agent_display = "MongoDB Explorer"
+                elif agent_name == "MongoDBQuerySpecialist":
                     agent_class = "agent-query"
                     agent_display = "Query Specialist"
-                elif agent_name == "VisualizationSpecialist":
+                elif agent_name == "MongoDBVisualizationSpecialist":
                     agent_class = "agent-viz"
                     agent_display = "Viz Specialist"
                 elif agent_name == "GroupChatManager":
                     agent_class = "agent-manager"
                     agent_display = "Manager"
                 else:
-                    agent_class = "agent-manager"
+                    agent_class = "agent-system"
                     agent_display = "System"
                 
                 # Start the message container
@@ -511,7 +411,7 @@ def render_chat_tab():
                 
                 # If the message contains data, display it
                 if message.get("type") == "data" and "data" in message:
-                    with st.expander("View Data", expanded=True):
+                    with st.expander("View MongoDB Data", expanded=True):
                         st.dataframe(message["data"])
                         
                         # Add export buttons
@@ -519,24 +419,28 @@ def render_chat_tab():
                         with col1:
                             csv = message["data"].to_csv(index=False)
                             b64 = base64.b64encode(csv.encode()).decode()
-                            href = f'<a href="data:file/csv;base64,{b64}" download="data_export.csv">Download CSV</a>'
+                            href = f'<a href="data:file/csv;base64,{b64}" download="mongodb_data.csv">Download CSV</a>'
                             st.markdown(href, unsafe_allow_html=True)
                         with col2:
                             excel_buffer = BytesIO()
                             message["data"].to_excel(excel_buffer, index=False)
                             excel_buffer.seek(0)
                             b64 = base64.b64encode(excel_buffer.getvalue()).decode()
-                            href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="data_export.xlsx">Download Excel</a>'
+                            href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="mongodb_data.xlsx">Download Excel</a>'
                             st.markdown(href, unsafe_allow_html=True)
                         with col3:
-                            json_str = message["data"].to_json(orient="records")
+                            # Use json_util for proper BSON type serialization
+                            json_str = json.dumps(
+                                message["data"].to_dict(orient="records"), 
+                                default=json_util.default
+                            )
                             b64 = base64.b64encode(json_str.encode()).decode()
-                            href = f'<a href="data:file/json;base64,{b64}" download="data_export.json">Download JSON</a>'
+                            href = f'<a href="data:file/json;base64,{b64}" download="mongodb_data.json">Download JSON</a>'
                             st.markdown(href, unsafe_allow_html=True)
                 
                 # If the message contains a visualization, display it
                 if message.get("type") == "visualization" and "visualization" in message:
-                    with st.expander("View Visualization", expanded=True):
+                    with st.expander("View MongoDB Visualization", expanded=True):
                         st.plotly_chart(message["visualization"], use_container_width=True)
                         
                         # Add download button for the visualization
@@ -544,7 +448,7 @@ def render_chat_tab():
                         message["visualization"].write_image(buf, format="png")
                         buf.seek(0)
                         b64 = base64.b64encode(buf.getvalue()).decode()
-                        href = f'<a href="data:image/png;base64,{b64}" download="visualization.png">Download Visualization as PNG</a>'
+                        href = f'<a href="data:image/png;base64,{b64}" download="mongodb_visualization.png">Download Visualization as PNG</a>'
                         st.markdown(href, unsafe_allow_html=True)
     
     # Chat input
@@ -553,8 +457,8 @@ def render_chat_tab():
         st.markdown('<div class="chat-input">', unsafe_allow_html=True)
         
         with st.form(key='message_form', clear_on_submit=True):
-            user_input = st.text_area("Type your message:", height=100, 
-                                     help="Ask questions about your database or request analyses")
+            user_input = st.text_area("Type your message about MongoDB:", height=100, 
+                                     help="Ask questions about your MongoDB database, collections, documents, or request analyses")
             col1, col2 = st.columns([1, 5])
             with col1:
                 submit_message = st.form_submit_button("Send")
@@ -569,7 +473,7 @@ def render_chat_tab():
             })
             
             # Process with agent and get response
-            with st.spinner("Thinking..."):
+            with st.spinner("Analyzing MongoDB..."):
                 try:
                     # Get response from agent system
                     response = st.session_state.agent.get_response(user_input)
@@ -578,11 +482,12 @@ def render_chat_tab():
                     st.session_state.messages.append(response)
                     
                     # Rerun to update the UI with the new messages
-                    st.experimental_rerun()
+                    st.rerun()
                     
                 except Exception as e:
-                    st.error(f"Error processing message: {str(e)}")
-                    traceback.print_exc()
+                    error_msg = f"Error processing MongoDB request: {str(e)}"
+                    logger.error(error_msg)
+                    st.error(error_msg)
                     
                     # Add error message to chat
                     st.session_state.messages.append({
@@ -594,17 +499,17 @@ def render_chat_tab():
                     })
                     
                     # Rerun to update the UI
-                    st.experimental_rerun()
+                    st.rerun()
                 
-        # Suggested queries to help users get started
+        # Suggested MongoDB queries to help users get started
         if len(st.session_state.messages) <= 1:  # Only show suggestions at the beginning
-            st.markdown("### Suggested Queries")
+            st.markdown("### Suggested MongoDB Queries")
             suggestion_cols = st.columns(3)
             
             suggestions = [
-                "Explore the database structure",
-                "Find the most active users",
-                "Create a visualization of data distribution"
+                "Explore the MongoDB database structure",
+                "Show me all collections and document counts",
+                "Find the most common field values across collections"
             ]
             
             for i, suggestion in enumerate(suggestions):
@@ -619,7 +524,7 @@ def render_chat_tab():
                         })
                         
                         # Process with agent and get response
-                        with st.spinner("Thinking..."):
+                        with st.spinner("Analyzing MongoDB..."):
                             try:
                                 # Get response from agent system
                                 response = st.session_state.agent.get_response(suggestion)
@@ -628,10 +533,11 @@ def render_chat_tab():
                                 st.session_state.messages.append(response)
                                 
                                 # Rerun to update the UI
-                                st.experimental_rerun()
+                                st.rerun()
                                 
                             except Exception as e:
-                                st.error(f"Error processing message: {str(e)}")
+                                error_msg = f"Error processing MongoDB request: {str(e)}"
+                                logger.error(error_msg)
                                 
                                 # Add error message to chat
                                 st.session_state.messages.append({
@@ -643,31 +549,32 @@ def render_chat_tab():
                                 })
                                 
                                 # Rerun to update the UI
-                                st.experimental_rerun()
+                                st.rerun()
         
         st.markdown('</div>', unsafe_allow_html=True)
     else:
-        st.warning("Please connect to a database first in the Connection tab.")
+        st.warning("Please connect to a MongoDB database first in the Connection tab.")
 
 def render_history_tab():
     """Render the conversation history tab"""
-    st.markdown('<h2 class="sub-header">Conversation History</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="sub-header">MongoDB Conversation History</h2>', unsafe_allow_html=True)
     
     # Conversation management
     if len(st.session_state.messages) > 0:
         # Allow saving the conversation
-        st.markdown("### Save Current Conversation")
-        save_name = st.text_input("Conversation Name", f"Conversation-{st.session_state.conversation_id[:8]}")
+        st.markdown("### Save Current MongoDB Conversation")
+        save_name = st.text_input("Conversation Name", f"MongoDB-{st.session_state.conversation_id[:8]}")
         
         if st.button("Save Conversation"):
             # Create a directory for saved conversations if it doesn't exist
-            os.makedirs("saved_conversations", exist_ok=True)
+            os.makedirs("mongodb_conversations", exist_ok=True)
             
             # Prepare the conversation data
             conversation_data = {
                 "id": st.session_state.conversation_id,
                 "name": save_name,
                 "timestamp": datetime.now().isoformat(),
+                "database": st.session_state.db_name or "Unknown",
                 "messages": []
             }
             
@@ -689,24 +596,24 @@ def render_history_tab():
                 conversation_data["messages"].append(msg_copy)
             
             # Save to file
-            filename = f"saved_conversations/{save_name}_{st.session_state.conversation_id}.json"
+            filename = f"mongodb_conversations/{save_name}_{st.session_state.conversation_id}.json"
             with open(filename, "w") as f:
-                json.dump(conversation_data, f, indent=2)
+                json.dump(conversation_data, f, indent=2, default=json_util.default)
                 
-            st.success(f"Conversation '{save_name}' saved successfully to {filename}!")
+            st.success(f"MongoDB conversation '{save_name}' saved successfully to {filename}!")
         
         # Allow clearing the conversation
         if st.button("Clear Current Conversation"):
             st.session_state.messages = []
             st.session_state.conversation_id = str(uuid.uuid4())
-            st.experimental_rerun()
+            st.rerun()
         
         # Option to export conversation
-        st.markdown("### Export Conversation")
+        st.markdown("### Export MongoDB Conversation")
         export_format = st.selectbox("Export Format", ["JSON", "Text", "HTML"])
         
         if st.button("Export"):
-            with st.spinner("Preparing export..."):
+            with st.spinner("Preparing MongoDB conversation export..."):
                 if export_format == "JSON":
                     # Convert to JSON
                     export_data = []
@@ -716,35 +623,36 @@ def render_history_tab():
                                   if k not in ["visualization", "data"]}
                         export_data.append(msg_copy)
                         
-                    json_str = json.dumps(export_data, indent=2)
+                    json_str = json.dumps(export_data, indent=2, default=json_util.default)
                     b64 = base64.b64encode(json_str.encode()).decode()
-                    href = f'<a href="data:file/json;base64,{b64}" download="conversation_export.json">Download JSON</a>'
+                    href = f'<a href="data:file/json;base64,{b64}" download="mongodb_conversation.json">Download JSON</a>'
                     st.markdown(href, unsafe_allow_html=True)
                     
                 elif export_format == "Text":
                     # Convert to text
                     text_lines = []
                     for msg in st.session_state.messages:
-                        sender = "You" if msg["role"] == "user" else "Assistant"
+                        sender = "You" if msg["role"] == "user" else f"MongoDB Assistant ({msg.get('agent', 'System')})"
                         text_lines.append(f"{sender} ({msg['time']}): {msg['content']}")
                         
                     text_content = "\n\n".join(text_lines)
                     b64 = base64.b64encode(text_content.encode()).decode()
-                    href = f'<a href="data:text/plain;base64,{b64}" download="conversation_export.txt">Download Text</a>'
+                    href = f'<a href="data:text/plain;base64,{b64}" download="mongodb_conversation.txt">Download Text</a>'
                     st.markdown(href, unsafe_allow_html=True)
                     
                 elif export_format == "HTML":
                     # Convert to HTML
-                    html_lines = ["<html><head><title>Conversation Export</title>",
+                    html_lines = ["<html><head><title>MongoDB Conversation Export</title>",
                                  "<style>body{font-family:sans-serif;max-width:800px;margin:0 auto;padding:20px;}",
                                  ".msg{padding:10px;margin:10px 0;border-radius:5px;}",
                                  ".user{background-color:#f0f0f0;}",
-                                 ".assistant{background-color:#f8f8f8;}</style></head><body>",
-                                 "<h1>Conversation Export</h1>"]
+                                 ".assistant{background-color:#f8f8f8;}",
+                                 ".mongodb{color:#4DB33D;font-weight:bold;}</style></head><body>",
+                                 "<h1><span class='mongodb'>MongoDB</span> Conversation Export</h1>"]
                     
                     for msg in st.session_state.messages:
                         css_class = "user" if msg["role"] == "user" else "assistant"
-                        sender = "You" if msg["role"] == "user" else "Assistant"
+                        sender = "You" if msg["role"] == "user" else "MongoDB Assistant"
                         agent = f" ({msg.get('agent', 'System')})" if msg["role"] == "assistant" else ""
                         
                         html_lines.append(f'<div class="msg {css_class}">')
@@ -755,24 +663,25 @@ def render_history_tab():
                     html_lines.append("</body></html>")
                     html_content = "\n".join(html_lines)
                     b64 = base64.b64encode(html_content.encode()).decode()
-                    href = f'<a href="data:text/html;base64,{b64}" download="conversation_export.html">Download HTML</a>'
+                    href = f'<a href="data:text/html;base64,{b64}" download="mongodb_conversation.html">Download HTML</a>'
                     st.markdown(href, unsafe_allow_html=True)
         
         # Show saved conversations
-        st.markdown("### Saved Conversations")
-        if os.path.exists("saved_conversations"):
-            saved_files = [f for f in os.listdir("saved_conversations") if f.endswith(".json")]
+        st.markdown("### Saved MongoDB Conversations")
+        if os.path.exists("mongodb_conversations"):
+            saved_files = [f for f in os.listdir("mongodb_conversations") if f.endswith(".json")]
             
             if saved_files:
                 saved_conversations = []
                 
                 for file in saved_files:
                     try:
-                        with open(f"saved_conversations/{file}", "r") as f:
+                        with open(f"mongodb_conversations/{file}", "r") as f:
                             data = json.load(f)
                             saved_conversations.append({
                                 "filename": file,
                                 "name": data.get("name", file),
+                                "database": data.get("database", "Unknown"),
                                 "timestamp": data.get("timestamp", "Unknown"),
                                 "message_count": len(data.get("messages", []))
                             })
@@ -786,61 +695,75 @@ def render_history_tab():
                 saved_df = pd.DataFrame(saved_conversations)
                 saved_df = saved_df.rename(columns={
                     "name": "Conversation Name",
+                    "database": "MongoDB Database",
                     "timestamp": "Saved On",
                     "message_count": "Messages"
                 })
                 
-                st.dataframe(saved_df[["Conversation Name", "Saved On", "Messages"]])
+                st.dataframe(saved_df[["Conversation Name", "MongoDB Database", "Saved On", "Messages"]])
                 
                 # Allow loading a conversation
                 selected_conversation = st.selectbox(
-                    "Select a conversation to load:",
+                    "Select a MongoDB conversation to load:",
                     options=[conv["filename"] for conv in saved_conversations],
                     format_func=lambda x: next((c["name"] for c in saved_conversations if c["filename"] == x), x)
                 )
                 
                 if st.button("Load Selected Conversation"):
                     try:
-                        with open(f"saved_conversations/{selected_conversation}", "r") as f:
+                        with open(f"mongodb_conversations/{selected_conversation}", "r") as f:
                             data = json.load(f)
                             
                             # Replace current conversation
                             st.session_state.messages = data.get("messages", [])
                             st.session_state.conversation_id = data.get("id", str(uuid.uuid4()))
                             
-                            st.success(f"Loaded conversation '{data.get('name')}'")
+                            st.success(f"Loaded MongoDB conversation '{data.get('name')}' for database '{data.get('database')}'")
                             st.experimental_rerun()
                             
                     except Exception as e:
-                        st.error(f"Error loading conversation: {str(e)}")
+                        st.error(f"Error loading MongoDB conversation: {str(e)}")
             else:
-                st.info("No saved conversations found.")
+                st.info("No saved MongoDB conversations found.")
         else:
-            st.info("No saved conversations found. Save a conversation to see it here.")
+            st.info("No saved MongoDB conversations found. Save a conversation to see it here.")
     else:
-        st.info("No conversation history yet. Start a conversation in the Chat Interface tab.")
+        st.info("No MongoDB conversation history yet. Start a conversation in the Chat Interface tab.")
 
 def render_footer():
     """Render the page footer"""
     st.markdown("---")
-    st.markdown("### About")
+    st.markdown("### About MongoDB AI Agent")
     st.markdown("""
-    This interface uses a multi-agent system to analyze databases and answer questions:
-    - **Database Explorer**: Understands database structure, schema, and relationships
-    - **Query Specialist**: Crafts efficient database queries to retrieve specific data
-    - **Visualization Specialist**: Creates informative data visualizations
-    - **Group Chat Manager**: Coordinates the specialists to solve complex problems
+    This interface uses a specialized multi-agent system to analyze MongoDB databases and answer questions:
+    - **MongoDB Explorer**: Understands MongoDB collections, documents, and relationships
+    - **MongoDB Query Specialist**: Crafts efficient MongoDB queries and aggregation pipelines
+    - **MongoDB Visualization Specialist**: Creates informative data visualizations from MongoDB data
+    - **Group Chat Manager**: Coordinates the specialists to solve complex MongoDB problems
     
     Built with Streamlit and powered by OpenAI's language models.
     """)
+    
+    # Include MongoDB logo and info
+    st.markdown("""
+    <div style="display: flex; align-items: center; margin-top: 20px;">
+        <div style="margin-right: 20px;">
+            <img src="https://www.mongodb.com/assets/images/global/leaf.png" width="50" alt="MongoDB Logo">
+        </div>
+        <div>
+            <p>MongoDB® is a registered trademark of MongoDB, Inc.</p>
+            <p>This tool is designed for MongoDB database exploration and analysis.</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # CSS file content
 def create_css_file():
-    """Create the CSS file for styling"""
+    """Create the CSS file for styling with MongoDB green color scheme"""
     css_content = """
     .main-header {
         font-size: 2.5rem;
-        color: #1E88E5;
+        color: #4DB33D;  /* MongoDB green */
         margin-bottom: 1rem;
     }
     .sub-header {
@@ -871,6 +794,10 @@ def create_css_file():
         background-color: #F3E5F5;
         color: #6A1B9A;
     }
+    .agent-system {
+        background-color: #F1F8E9;
+        color: #4DB33D;  /* MongoDB green */
+    }
     .message-container {
         padding: 1rem;
         border-radius: 0.5rem;
@@ -890,18 +817,31 @@ def create_css_file():
         margin-bottom: 1rem;
     }
     .stButton button {
-        background-color: #1E88E5;
+        background-color: #4DB33D;  /* MongoDB green */
         color: white;
         border-radius: 0.5rem;
     }
     .stButton button:hover {
-        background-color: #1565C0;
+        background-color: #3D9330;  /* Darker MongoDB green */
     }
     div[data-testid="stHorizontalBlock"] {
         gap: 1rem;
     }
     .chat-input {
         margin-top: 1rem;
+    }
+    .mongodb-logo {
+        color: #4DB33D;
+        font-weight: bold;
+    }
+    a {
+        color: #4DB33D !important;  /* MongoDB green for links */
+    }
+    .stTabs [data-baseweb="tab-highlight"] {
+        background-color: #4DB33D !important;  /* MongoDB green for tab highlight */
+    }
+    .stTabs [aria-selected="true"] {
+        color: #4DB33D !important;  /* MongoDB green for selected tab */
     }
     """
     
@@ -914,9 +854,14 @@ def create_css_file():
 
 # Main entry point
 if __name__ == "__main__":
-    # Create the CSS file if it doesn't exist
-    if not os.path.exists("style.css"):
-        create_css_file()
-    
-    # Run the application
-    main()
+    try:
+        # Create the CSS file if it doesn't exist
+        if not os.path.exists("style.css"):
+            create_css_file()
+        
+        # Run the application
+        main()
+    except Exception as e:
+        st.error(f"Application error: {str(e)}")
+        logger.error(f"Application error: {str(e)}")
+        traceback.print_exc()

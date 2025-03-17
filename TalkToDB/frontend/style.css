@@ -1,67 +1,65 @@
-
-    .main-header {
-        font-size: 2.5rem;
-        color: #1E88E5;
-        margin-bottom: 1rem;
-    }
-    .sub-header {
-        font-size: 1.5rem;
-        color: #424242;
-        margin-bottom: 1rem;
-    }
-    .agent-tag {
-        font-size: 0.8rem;
-        font-weight: bold;
-        padding: 0.2rem 0.5rem;
-        border-radius: 1rem;
-        margin-right: 0.5rem;
-    }
-    .agent-explorer {
-        background-color: #E3F2FD;
-        color: #1565C0;
-    }
-    .agent-query {
-        background-color: #E8F5E9;
-        color: #2E7D32;
-    }
-    .agent-viz {
-        background-color: #FFF3E0;
-        color: #E65100;
-    }
-    .agent-manager {
-        background-color: #F3E5F5;
-        color: #6A1B9A;
-    }
-    .message-container {
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin-bottom: 1rem;
-        border: 1px solid #EEEEEE;
-    }
-    .user-message {
-        background-color: #F5F5F5;
-    }
-    .assistant-message {
-        background-color: #FAFAFA;
-    }
-    .database-form {
-        padding: 1rem;
-        background-color: #FAFAFA;
-        border-radius: 0.5rem;
-        margin-bottom: 1rem;
-    }
-    .stButton button {
-        background-color: #1E88E5;
-        color: white;
-        border-radius: 0.5rem;
-    }
-    .stButton button:hover {
-        background-color: #1565C0;
-    }
-    div[data-testid="stHorizontalBlock"] {
-        gap: 1rem;
-    }
-    .chat-input {
-        margin-top: 1rem;
-    }
-    
+.main-header {
+  font-size: 2.5rem;
+  color: #1e88e5;
+  margin-bottom: 1rem;
+}
+.sub-header {
+  font-size: 1.5rem;
+  color: #424242;
+  margin-bottom: 1rem;
+}
+.agent-tag {
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  margin-right: 0.5rem;
+}
+.agent-explorer {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+.agent-query {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+.agent-viz {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+.agent-manager {
+  background-color: #f3e5f5;
+  color: #6a1b9a;
+}
+.message-container {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+.user-message {
+  background-color: transparent;
+}
+.assistant-message {
+  background-color: transparent;
+}
+.database-form {
+  padding: 1rem;
+  background-color: #fafafa;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+.stButton button {
+  background-color: #1e88e5;
+  color: white;
+  border-radius: 0.5rem;
+}
+.stButton button:hover {
+  background-color: #1565c0;
+}
+div[data-testid="stHorizontalBlock"] {
+  gap: 1rem;
+}
+.chat-input {
+  margin-top: 1rem;
+}

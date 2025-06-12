@@ -1,4 +1,4 @@
-# AI-Powered Data Analysis POC Projects
+# AI-Powered Agentic Suite
 
 A collection of sophisticated proof-of-concept (POC) projects showcasing advanced data analysis, AI integration, and natural language processing capabilities. These projects are designed for sales demonstrations and client presentations.
 

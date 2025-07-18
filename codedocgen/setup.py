@@ -21,7 +21,7 @@ setup(
     ],
     python_requires=">=3.7",
     install_requires=[
-        "pyautogen>=0.2.0",
+        "ag2>=0.2.0",
         "requests>=2.25.0",
         "questionary>=1.10.0",
         "pyyaml>=6.0",

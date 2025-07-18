@@ -27,7 +27,7 @@ try:
 except ImportError:
     print("Error: Required packages not installed.")
     print("Please install the required packages using:")
-    print("pip install pyautogen requests")
+    print("pip install ag2 requests")
     sys.exit(1)
 
 # Configure logging
